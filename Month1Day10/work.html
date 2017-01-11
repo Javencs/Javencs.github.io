@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2017/1/9-周静雯-工具介绍总结</title>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;}
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px 20px 50px;
+        }
+        .box>p{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            line-height: 30px;
+            background-color: antiquewhite;
+
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            color: #333;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>code{
+            display: block;
+            height: auto;
+            width: 100%;
+            color: #333;
+            background-color:#f6f6f6;
+            line-height: 2em;
+            padding-left: 20px;
+        }
+        img{
+        	max-width:800px ;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;">作用域</h1>
+
+    <a>Javascript的作用域只有两种：全局作用域和本地作用域，本地作用域是按照函数来区分的。</a>
+
+    <code>
+        var a = 1; <br/>
+        var f = function () { <br/>
+        console.log(a); <br/>
+        var a = 2; <br/>
+        console.log(a); <br/>
+        } <br/>
+        f(); <br/>
+        console.log(a);
+    </code>
+    <p>js在语法分析阶段会扫描本作用域内的所有变量声明并提前，于是 f 函数体内就被提前，结果依次是：undefined,2,1。</p>
+    <a>易错题</a>
+    <code>
+        var someuser = { <br/>
+        name: 'byvoid', <br/>
+        func: function() { <br/>
+        console.log(this.name); <br/>
+        }  }; <br/>
+        var foo = { <br/>
+        name: 'foobar' <br/>
+        }; <br/>
+        someuser.func(); // 输出 byvoid <br/>
+
+        foo.func = someuser.func; <br/>
+        foo.func(); // 输出 foobar <br/>
+
+        name = 'global'; <br/>
+        func = someuser.func; <br/>
+        func(); // 输出 global
+    </code>
+    <p>函数作用域的嵌套关系是定义时决定的,而不是调用时决定的,也就 是说,JavaScript 的作用域是静态作用域,又叫词法作用域,这是因为作用域的嵌套关系可以在语法分析时确定,而不必等到运行时确定。</p>
+    <code>
+
+    </code>
+
+
+</div>
+</body>
+</html>

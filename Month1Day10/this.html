@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2017/1/9-周静雯-工具介绍总结</title>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;}
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px 0 50px;
+        }
+        .box>p{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            background-color: antiquewhite;
+
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            color: #333;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>code{
+            display: block;
+            height: auto;
+            width: 100%;
+            color: #333;
+            background-color:#f6f6f6;
+            line-height: 2em;
+            padding-left: 20px;
+        }
+        img{
+        	max-width:800px ;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;">This 指向</h1>
+    <p>函数在什么环境下运行，this就指向什么</p>
+    <a>1.函数调用模式</a>
+    <code>
+        window.value=1;  <br/>
+        function getValue(){  <br/>
+        console.log(this.value);  <br/>
+        }  <br/>
+        getValue();//输出1，此时的this指向window
+    </code>
+    <a>2.方法调用模式</a>
+    <code>
+        var Obj={  <br/>
+        value:2,  <br/>
+        getValue:function(){  <br/>
+        console.log(this.value);//输出2,this指向Obj  <br/>
+        }  }
+    </code>
+    <a>3.构造器调用模式</a>
+    <code>
+        function main(val){  <br/>
+        this.value=val;  <br/>
+        }  <br/>
+        main.prototype.getValue=function(){  <br/>
+        console.log(this.value);  <br/>
+        }  <br/>
+        var fun=new main(3);  <br/>
+        fun.getValue();  <br/>
+        fun.value;//输出3，this指向main的实例对象fun
+    </code>
+    <a>4.apply/call调用模式以及bind</a>
+    <code>
+        function showValue(){  <br/>
+        console.log(this.value);  <br/>
+        }  <br/>
+        var obj={  <br/>
+        value:4  <br/>
+        }  <br/>
+        showValue.call(obj)//输出4，this指向了obj对象
+    </code>
+    <p>ECMA5中新增了bind方法？？？？具体用法可以google一下，这里是演示this绑定的用法,</p>
+     <code>
+        function showValue(){ <br/>
+        console.log(this.value); <br/>
+        } <br/>
+        var obj={ <br/>
+        value:4 <br/>
+        } <br/>
+        var showValue2=showValue.bind(obj); <br/>
+        showValue2()//输出4，this指向了obj对象
+    </code>
+
+</div>
+</body>
+</html>

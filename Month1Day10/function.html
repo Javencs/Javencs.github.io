@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2017/1/9-周静雯-工具介绍总结</title>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;}
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px 20px 50px;
+        }
+        .box>p{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            background-color: antiquewhite;
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            color: #333;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        img{
+        	max-width:800px ;
+        }
+        .box>code{
+            display: block;
+            height: auto;
+            width: 100%;
+            color: #333;
+            background-color:#f6f6f6;
+            line-height: 2em;
+            padding-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;">函数声明</h1>
+    <a>1.函数声明式声明</a>
+    <code>
+        function getStyle(obj,attr){ <br/>
+          if(obj.currentStyle){ <br/>
+              return parseInt(obj.currentStyle[attr]); <br/>
+          }else{ <br/>
+              return parseInt(getComputedStyle(obj,false)[attr]);} <br/>
+         }
+
+    </code>
+    <a>2.表达式声明</a>
+    <p>要先声明，后调用，不然会报undefine。</p>
+    <code>
+        var getStyle = function() { <br/>
+        var a=1; <br/>
+        var b=4; <br/>
+        return a+b; <br/>
+        } <br/>
+        getStyle();
+    </code>
+    <a>3.匿名声明</a>
+    <code>
+        (function() { <br/>
+        var a=1; <br/>
+        var b=4; <br/>
+        return a+b;
+        })() <br/>
+
+    </code>
+    <a>4.动态声明</a>
+    <code>
+        var getStyle = new Function( <br/>
+        "var a=1", <br/>
+        "var b=4", <br/>
+        "return a+b" <br/>
+        )
+    </code>
+    <a>注意</a>
+    <p>函数声明式声明会提前，两个函数名相同的函数先后声明，前一个会被后一个覆盖。</p>
+    <p>权限提升：函数声明式 > 表达式</p>
+
+    <!--<p>1.它可以作为一个版本控制系统和协作工具，用它来发布工作。</p>
+       <p>2.可以将项目存档，与其他人分享交流，并让其他开发者帮助你一起完成这个项目，支持多人共同完成一个项目。</p>
+       <p>3.创建自己的项目，并备份，代码不需要保存在本地或者服务器。</p>
+       <p>4.在GitHub页面，你可以直接开始，而不需要设置主机或者DNS。</p>-->
+
+</div>
+<!--
+
+<script>
+    var getStyle = function() {
+        var a=1;
+        var b=4;
+        return a+b
+    }
+    getStyle();
+</script>
+-->
+
+</body>
+</html>
