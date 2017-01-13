@@ -54,12 +54,6 @@
 <body>
 <div class="box">
     <h1 style="background-color: antiquewhite;font-size: 28px">js Error对象</h1>
-    <a>Array</a>
-    <p></p>
-    <a></a>
-    <code>
-
-    </code>
     <a>Event对象</a>
     <p>在js中，有一个Error对象，我们通常可以用它来设置错误信息，或者设置异常捕捉。</p>
     <p>Error 对象也可以用语法显式创建，或用 throw 语句抛掉。在两种情况下，都可以添加选择的任何属性，以拓展 Error 对象的能力。</p>
@@ -71,16 +65,36 @@
         description   //description是描述错误的简短字符串。如果省略则为空字符串。  <br/>
         );
     </code>
-    <br/>
+    <a>抛出Error</a>
     <code>
-
+        throw new Error(0,"Error Demo");  <br/>
+        new Error可省略:  <br/>
+        throw("Error Demo");  <br/>
     </code>
-    <a>插入排序</a>
-
+    <a>捕获Error</a>
     <code>
-        <br/>
+        try catch finally语句:
+        try{  <br/>
+        ..可能错误的语句..}  <br/>
+        catch(e){  <br/>
+        ..错误发生后的处理..}  <br/>
+        finally{            // finally不是必须的   <br/>
+        ..完成后执行的语句块..}  <br/>
     </code>
-
+    <p>window.onerror错误捕获,各个浏览器对onerror的支持不同，IN发生error时，正常代码会执行；在火狐中，代码将结束；Safari只支持onerror事件处理。</p>
+    <p>onerror事件会传给回调函数3个默认参数:Msg: 错误信息；Url: 发生错误的文件的Url；Num: 错误发生位置的行号。</p>
+    <p>img 应用onerror：img src="sample.jpg" onerror="javascript:alert('图像载入错误');" ；如果图像无法加载，将弹窗“图像载入错误”</p>
+    <a>处理Error</a>
+    <code>
+        判断错误类型:  <br/>
+        catch(e){  <br/>
+        if(e.name=="RangeError")  <br/>
+        alert("错误提示");}  <br/>
+        或  <br/>
+        catch(e){  <br/>
+        if(e instanceof TypeError)  <br/>
+        alert("错误提示");}
+    </code>
 
 </div>
 
