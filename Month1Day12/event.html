@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript回顾</title>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;}
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px 20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            color: #333;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            line-height: 40px;
+            background-color: antiquewhite;
+        }
+
+        .box>code{
+            display: block;
+            height: auto;
+            width: 100%;
+            color: #333;
+            background-color:#f6f6f6;
+            line-height: 2em;
+            padding-left: 20px;
+            margin-bottom: 3px;
+        }
+
+        img{
+        	max-width:800px ;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">JS Array,Event,排序回顾</h1>
+    <a>Array</a>
+    <p></p>
+    <a></a>
+    <code>
+        a = new Array(1,2,3);  <br/>
+        b = "JScript";  <br/>
+        c = new Array(42, "VBScript");  <br/>
+        d = a.concat( c);  //返回一个新数组，这个新数组是由两个或更多数组组合而成的。  <br/>
+        e = [1, 2, 3, "JScript", 42, "VBScript"]  //数组里可以盛放各种类型的数据   <br/>
+        document.write(d); //1,2,3,42,VBScript <br/>
+
+        document.write(a.pop()); //pop()移除数组中的最后一个元素并返回该元素。  <br/>
+
+        a.shift(2);//移除数组中的第一个元素并返回该元素。  <br/>
+
+        a.slice(0, -2); //slice 方法一直复制到end所指定的元素，但是不包括该元素。如果start为负，将它作为length+start处理，此处length 为数组的长度。如果end为负，就将它作为 length + end 处理，此处 length 为数组的长度。如果省略 end ，那么 slice 方法将一直复制到 arrayObj 的结尾。如果 end 出现在 start 之前，不复制任何元素到新数组中。
+        <br/>
+        a.sort(); //实现数组的'从小到大'排序,但不是正常排序且占资源，不推荐<br/>
+        a.reverse();  //将数组倒转eg：[1,5,3,2] ---[2,3,5,1]  <br/>
+        a.splice(1,2,3);  //移除数组里从下标1开始的2数，并用3代替，，，，括号最后一个数3可写可不写
+    </code>
+    <a>Event对象</a>
+    <p>preventDefault()  取消浏览器默认行为</p>
+    <p>currenttarget：当处于捕获和冒泡阶段的时候，currentTarget指向当前事件活动的对象（一般为父级）</p>
+    <p>target：当处于捕获和冒泡阶段的时候，target指向被单击的对象</p>
+    <code>
+        mc1.addChild(mc2); <br/>
+        mc1.addEventListener(MouseEvent.CLICK,doit1); <br/>
+        function doit1(e){ <br/>
+        trace(e.target.name);//点击mc2,输出 mc2 <br/>
+        trace(e.currentTarget.name);//点击mc2,输出 mc1 <br/>
+        } <br/>
+        mc2.addEventListener(MouseEvent.CLICK,doit2); <br/>
+        function doit2(e){ <br/>
+        trace(e.target.name);//点击mc2,输出 mc2 <br/>
+        trace(e.currentTarget.name);//点击mc2,输出 mc2  <br/>
+        }
+    </code>
+    <a>插入排序</a>
+    <p>最短时间：n；最长时间：n^2；</p>
+    <code>
+        function insertSortArray(sort_Array,x){         //一趟排序的算法  <br/>
+        for(var i=0;<!--i<sort_Array.length-->;i++){  <br/>
+        if(sort_array[i]>=x){                    //找到插入点  <br/>
+        for (var j=sort_array.length; j>i; j--){   //后挪空出位置  <br/>
+        sort_array[j]=sort_array[j-1]  <br/>
+        }  <br/>
+        sort_array[i]=x;                             //插入  <br/>
+        break;                                      //任务结束，退出循环  <br/>
+        }  <br/>
+        }  <br/>
+        return sort_array;                                      //返回处理后的数组  <br/>
+        }
+    </code>
+
+
+</div>
+
+</body>
+</html>
