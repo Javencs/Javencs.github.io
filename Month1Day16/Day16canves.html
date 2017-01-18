@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Canvas 画布</title>
+    <title>Canvas 画布（续）</title>
     <style>
         *{margin: 0;padding: 0;background-color: #010101;}
         .box{
@@ -47,19 +47,54 @@
         img{
             max-width:800px ;
         }
+        #cnv{
+            width: 500px;
+            height: 220px;
+            background-color: #fff;
+        }
     </style>
 </head>
 
 <body>
 <div class="box">
     <h1 style="background-color: antiquewhite;font-size: 28px">Canvas 画布（续）</h1>
-    <p>一个有趣的现象：在画布上画一个矩形1，当画矩形2时你会发现画布的位置发生了变化，即矩形1定位时是整个画布和矩形1一起发生移动，下面我们来看看这个有趣的现象和解决它的办法。</p>
-    <a>Canvas的创建和绘制</a>
-    <img src="imgs/img1.png">
-    <p>canvas 元素本身是没有绘图能力的。所有的绘制工作必须在 JavaScript 内部完成：</p>
-
+    <a>图片保存与恢复</a>
+    <p>在canvas对象中，save方法把当前状态压入栈中；restore方法从栈顶弹出状态。绘制状态不会覆盖对画布所做的每一件事。save保存canvas状态，保存之后，可以调用canvas的平移、缩放、旋转、错切、裁剪等方法进行操作，再用restore方法恢复之前保存的状态，防止save后对canvas执行的操作有后续影响。save和restore要配对使用（restore可以比save少，但不能多），如果restore调用次数比save多，会引起Error错误。</p>
+    <img src="imgs/2701.png">
+    <p>效果如下：</p>
+    <img src="imgs/4346.png">
+    <p>用ctx.save() 和 ctx.translate(20,20)则可以很方便的排列</p>
+    <img src="imgs/3736.png">
+    <p>效果如下：</p>
+    <img src="imgs/4424.png">
+    <a> 反转颜色</a>
+    <img src="imgs/124.png">
+    <canvas id="cnv"></canvas>
+    <img src="imgs/img7.png">
 
    <!-- <p>线性渐变，径向渐变,平移，缩放，旋转，两个曲线，组合图像，图片绘制</p>-->
 </div>
+<script>
+    var c = document.getElementById('cnv');
+    var ctx=c.getContext("2d");
+     var img = new  Image();
+    img.src = 'imgs/img7.png';
+    img.style.width = 220+'px';
+    img.style.height = 220+'px';
+    img.onload = function(){
+        ctx.drawImage(img,0,0);
+        var imgData = ctx.getImageData(0,0, c.width, c.height);
+        //反转颜色
+        for(var i = 0;i<imgData.data.length;i+=4){
+            imgData.data[i] = 255-imgData.data[i];
+            imgData.data[i+1] = 255-imgData.data[i+1];
+            imgData.data[i+2] = 255-imgData.data[i+2];
+            imgData.data[i+3] = 255;
+        }
+        ctx.putImageData(imgData,0,0);
+    }
+
+
+</script>
 </body>
 </html>

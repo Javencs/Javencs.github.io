@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas 画布</title>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;}
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px 20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            color: #333;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            line-height: 40px;
+            background-color: antiquewhite;
+        }
+
+        .box>code{
+            display: block;
+            height: auto;
+            width: 100%;
+            color: #333;
+            background-color:#f6f6f6;
+            line-height: 2em;
+            padding-left: 20px;
+            margin-bottom: 3px;
+        }
+        img{
+            max-width:800px ;
+        }
+        #cnv{
+            width: 700px;
+            height: 700px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">Canvas 画布（续）</h1>
+    <p>一个有趣的现象：在画布上画一个矩形1，当画矩形2时你会发现画布的位置发生了变化，即矩形1定位时是整个画布和矩形1一起发生移动，下面我们来看看这个有趣的现象和解决它的办法。</p>
+    <canvas id="cnv"></canvas>
+    <img src="imgs/img1.png">
+    <p>canvas 元素本身是没有绘图能力的。所有的绘制工作必须在 JavaScript 内部完成：</p>
+
+
+   <!-- <p>线性渐变，径向渐变,平移，缩放，旋转，两个曲线，组合图像，图片绘制</p>-->
+</div>
+<script>
+    var cnv = document.getElementById('cnv');
+    var ctx=cnv.getContext("2d");
+    // 红色矩形
+    ctx.beginPath();
+    ctx.lineWidth="6";
+    ctx.strokeStyle="red";
+    ctx.rect(5,5,200,20);
+    ctx.stroke();
+    // 绿色矩形
+    ctx.beginPath();
+    ctx.lineWidth="4";
+    ctx.strokeStyle="green";
+    ctx.rect(30,30,200,20);
+    ctx.stroke();
+    // 蓝色矩形
+    ctx.beginPath();
+    ctx.lineWidth="10";
+    ctx.strokeStyle="blue";
+    ctx.rect(50,50,200,20);
+    ctx.stroke();
+
+
+
+</script>
+</body>
+</html>
