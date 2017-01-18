@@ -23,6 +23,7 @@
             line-height: 30px;
             width: 100%;
             margin: 10px 0;
+            padding-left: 20px;
             background-color: burlywood;
         }
         .box>p{
@@ -34,7 +35,7 @@
             background-color: antiquewhite;
         }
 
-        .box>code{
+        .box>pre{
             display: block;
             height: auto;
             width: 100%;
@@ -57,39 +58,30 @@
 
 <body>
 <div class="box">
-    <h1 style="background-color: antiquewhite;font-size: 28px">Canvas 画布（续）</h1>
-    <p>一个有趣的现象：在画布上画一个矩形1，当画矩形2时你会发现画布的位置发生了变化，即矩形1定位时是整个画布和矩形1一起发生移动，下面我们来看看这个有趣的现象和解决它的办法。</p>
-    <canvas id="cnv"></canvas>
-    <img src="imgs/img1.png">
-    <p>canvas 元素本身是没有绘图能力的。所有的绘制工作必须在 JavaScript 内部完成：</p>
-
-
-   <!-- <p>线性渐变，径向渐变,平移，缩放，旋转，两个曲线，组合图像，图片绘制</p>-->
+    <h1 style="background-color: antiquewhite;font-size: 28px">video 视频</h1>
+    <a>video的操作和audio的类似，只要把audio改成video就可以了，具体操作参考audio的介绍。</a>
+    <a>视频播放暂停模块</a>
+    <pre>
+    &lt;video src="" id="video"&gt;&lt;/video&gt;
+    &lt;div class="witeBox"&gt;&lt;img src="imgs/碟片.png" id="wite"&gt;&lt;/div&gt;
+    &lt;div class="contral"&gt;
+        &lt;button id="play"&gt;播放&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        //播放、暂停切换
+        var play = document.getElementById('play');
+        var video = document.getElementById('video');
+        play.onclick = function clicks(){
+            if(video.paused){
+                video.play();
+                con.innerHTML = '暂停';
+            }else{
+                video.pause();
+                con.innerHTML  = '播放';
+            }
+        }
+    &lt;/script&gt;
+    </pre>
 </div>
-<script>
-    var cnv = document.getElementById('cnv');
-    var ctx=cnv.getContext("2d");
-    // 红色矩形
-    ctx.beginPath();
-    ctx.lineWidth="6";
-    ctx.strokeStyle="red";
-    ctx.rect(5,5,200,20);
-    ctx.stroke();
-    // 绿色矩形
-    ctx.beginPath();
-    ctx.lineWidth="4";
-    ctx.strokeStyle="green";
-    ctx.rect(30,30,200,20);
-    ctx.stroke();
-    // 蓝色矩形
-    ctx.beginPath();
-    ctx.lineWidth="10";
-    ctx.strokeStyle="blue";
-    ctx.rect(50,50,200,20);
-    ctx.stroke();
-
-
-
-</script>
 </body>
 </html>
