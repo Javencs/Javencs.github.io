@@ -23,6 +23,7 @@
             line-height: 30px;
             width: 100%;
             margin: 10px 0;
+            padding-left: 20px;
             background-color: burlywood;
         }
         .box>p{
@@ -34,7 +35,7 @@
             background-color: antiquewhite;
         }
 
-        .box>code{
+        .box>pre{
             display: block;
             height: auto;
             width: 100%;
@@ -58,38 +59,198 @@
 <body>
 <div class="box">
     <h1 style="background-color: antiquewhite;font-size: 28px">audio 音频</h1>
-    <a></a>
-    <canvas id="cnv"></canvas>
-    <img src="imgs/img1.png">
-    <p>canvas 元素本身是没有绘图能力的。所有的绘制工作必须在 JavaScript 内部完成：</p>
+    <a>播放暂停模块</a>
+    <pre>
+    &lt;audio src="music/周杰伦 - 黑色毛衣.mp3" id="audios"&gt;&lt;/audio&gt;
+    &lt;div class="witeBox"&gt;&lt;img src="imgs/碟片.png" id="wite"&gt;&lt;/div&gt;
+    &lt;div class="contral"&gt;
+        &lt;button id="play"&gt;播放&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        //播放、暂停切换
+        var play = document.getElementById('play');
+        var audios = document.getElementById('audios');
+        play.onclick = function clicks(){
+            if(audios.paused){
+                audios.play();
+                con.innerHTML = '暂停';
+            }else{
+                audios.pause();
+                con.innerHTML  = '播放';
+            }
+        }
+    &lt;/script&gt;
+    </pre>
+    <a>上/下一曲切换模块</a>
+    <pre>
+    var songs = ['music/周杰伦 - 黑色毛衣.mp3','music/张靓颖 - 朝思暮想.mp3',
+        'music/五月天 - 突然好想你 .mp3','music/许嵩 - 半城烟沙.mp3'];
+    //上一曲
+    pre.onclick = function(){
+        timeD.innerHTML ='/  ' + Math.floor(audios.duration/60)+':'+Math.ceil(audios.duration%60);
+        bar.style.left = -200 +'px';
+            songS -=1;
+            if(songS<0){
+                songS = songs.length-1;
+            }
+        audios.src = songs[songS];
+        wite.src = songPic[songS];
+        audios.paused=false;
+        con.onclick();
+    }
+    //下一曲
+    var songS=0;
+    next.onclick =nextS;
+    function nextS(){
+        bar.style.left = -200 +'px';
+        if(audios.paused) {    //如果第一次直接点击下一首而没有按开始键，自动转换图片
+            if (firstImg) {
+                wite.src = songPic[0];
+                firstImg = false;
+            }
+        }
+        if(changeM==2){
+            songS =Math.floor(Math.random()*songs.length);
+            console.log('随机播放'+songS);
+        }else{
+            songS +=1;
+            if(songS>songs.length-1){
+                songS = 0;
+            }
+        }
+        audios.src = songs[songS];
+        wite.src = songPic[songS];
+        audios.paused=false;
+        con.onclick();
+    }
+    </pre>
+    <a>播放模式切换</a>
+    <pre>
+    var changeM = 0;
+    play.onclick = function(){
+        changeM+=1;
+        changeM>2?(changeM=0):null;
+        console.log(changeM);
+        if(changeM==0){   //列表循环
+            audios.loop=false;
+            play.src ='imgs/列表循环.png';
+            p.innerHTML='列表循环';
+        }else if(changeM==1){    //单曲循环
+            next.disabled=false;
+            audios.loop=true;
+            play.src ='imgs/单曲循环.png';
+            p.innerHTML='单曲循环';
+        }else{
+            audios.loop=false;    //随机播放
+            play.src ='imgs/随机播放.png';
+            p.innerHTML='随机播放';
+        }
+    };
+    </pre>
+    <a>播放进度模块</a>
+    <pre>
+    var Time;
+    var mint =0;  //分 显示
+    var sec =0; //秒 显示
+    function barTime(){
+        clearInterval(Time);
+        //音乐总时间的显示
+        timeD.innerHTML ='/  ' + Math.floor(audios.duration/60)+':'+Math.ceil(audios.duration%60);
+        Time =setInterval(function(){
+            if(flagAudio){
+        //加载条实时位置
+    buffer.style.left =Math.ceil(audios.buffered.end(audios.buffered.length-1))/audios.duration+'px';
+        //进度条实时位置
+                bar.style.left = -200+parseInt(audios.currentTime/audios.duration*200)+'px';
+                if(Math.ceil(audios.currentTime%60)<10){   //当前音乐时间的显示
+                    sec ='0'+Math.ceil(audios.currentTime%60);
+                }else{
+                    sec =Math.ceil(audios.currentTime%60);
+                }
+                if(Math.floor(audios.currentTime/60)==0){
+                    mint = '00'
+                }else if(Math.floor(audios.currentTime/60)<10){
+                    mint = '0'+Math.floor(audios.currentTime/60);
+                }else{
+                    mint =Math.floor(audios.currentTime/60);
+                }
+                timeNow.innerHTML = mint+':'+sec;
+            }
+            if(audios.ended){
+                setTimeout(function(){  //每首歌时间初始化
+                    mint =0;
+                    sec =0;
+                    timeD.innerHTML ='/  ' + Math.floor(audios.duration/60)+':'+Math.ceil(audios.duration%60);
+                },40)
+                bar.style.left = -200 +'px';
+                buffer.style.left = -200+'px';
+                nextS();
 
-
-   <!-- <p>线性渐变，径向渐变,平移，缩放，旋转，两个曲线，组合图像，图片绘制</p>-->
-</div>
-<script>
-    var cnv = document.getElementById('cnv');
-    var ctx=cnv.getContext("2d");
-    // 红色矩形
-    ctx.beginPath();
-    ctx.lineWidth="6";
-    ctx.strokeStyle="red";
-    ctx.rect(5,5,200,20);
-    ctx.stroke();
-    // 绿色矩形
-    ctx.beginPath();
-    ctx.lineWidth="4";
-    ctx.strokeStyle="green";
-    ctx.rect(30,30,200,20);
-    ctx.stroke();
-    // 蓝色矩形
-    ctx.beginPath();
-    ctx.lineWidth="10";
-    ctx.strokeStyle="blue";
-    ctx.rect(50,50,200,20);
-    ctx.stroke();
-
-
-
-</script>
+            }
+        },300)
+    }
+    </pre>
+    <a>进度拖放模块</a>
+    <pre>
+        //进度条的拖动
+    var flag = false;  //判断进度条被点击，false
+    var flagAudio = false;   //判断拖动进度条是否结束（音乐从结束点开始播放），结束true
+    progressBar.onmousedown = function(e){
+        proLeft =e.clientX - (contral.offsetLeft+progressBar.offsetLeft);
+        flagAudio = false;
+        flag = true;
+        bar.style.left = -200 + proLeft + 'px';
+        console.log(proLeft);
+    }
+    progressBar.onmousemove = function(e){
+        proLeft =e.clientX - (contral.offsetLeft+progressBar.offsetLeft);
+        if(flag&&(proLeft<=200)&&(proLeft>=0)){
+            bar.style.left = -200+ proLeft+'px';
+        }else{
+            return flag;
+        }
+    }
+    window.onmouseup = function(e){
+        proLeft =e.clientX - (contral.offsetLeft+progressBar.offsetLeft);
+        if(flag&&(proLeft<=200)&&(proLeft>=0)){
+            bar.style.left = -200+ proLeft+'px';
+            audios.currentTime = proLeft/200*audios.duration;
+        }
+        flagAudio = true;
+        flag = false;
+    }
+    </pre>
+    <a>音量调节模块</a>
+    <pre>
+    volumeBar.style.top = 40 + 'px';
+    audios.volume = 1-parseInt(volumeBar.style.top)/80;
+    volumeb.onmousedown = function(e){
+        vol = true;
+        volTop =80-(contral.offsetTop - e.clientY+10-6);
+        volumeBar.style.top = volTop + 'px';
+        audios.volume = 1-parseInt(volumeBar.style.top)/80;
+    }
+    volumeb.onmousemove = function(e){
+        volTop =80-(contral.offsetTop - e.clientY+10-6);
+        if(vol&&(volTop<=80)&&(volTop>=0)){
+            volumeBar.style.top = volTop + 'px';
+            audios.volume = 1-parseInt(volumeBar.style.top)/80;
+        }else{
+            return vol;
+        }
+    }
+    window.onmouseup = function(e){
+        vol = false;
+        volTop =80-(contral.offsetTop - e.clientY+10-6);
+        if(volTop>80){
+            volumeBar.style.top = 0 + 'px';
+        }else if(volTop<0){
+            volumeBar.style.top = 80 + 'px';
+        }else{
+            volumeBar.style.top = volTop + 'px';
+            audios.volume = 1-parseInt(volumeBar.style.top)/80;
+        }
+    }
+    </pre>
 </body>
 </html>
