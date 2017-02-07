@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX补充</title>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;}
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px 20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            color: #333;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            line-height: 40px;
+            background-color: antiquewhite;
+        }
+        .box>p:first-line{
+            font-weight: bold;
+        }
+        .box>span{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            line-height: 40px;
+            background-color: antiquewhite;
+        }
+        .box>code{
+            display: block;
+            height: auto;
+            width: 100%;
+            color: #333;
+            background-color:#f6f6f6;
+            line-height: 2em;
+            padding-left: 20px;
+            margin-bottom: 3px;
+        }
+        img{
+            max-width:800px ;
+        }
+        .box>pre{
+            display: block;
+            height: auto;
+            width: 100%;
+            color: #333;
+            background-color:#f6f6f6;
+            line-height: 2em;
+            padding-left: 20px;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">AJAX补充</h1>
+    <p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</p>
+    <a>工厂模式</a>
+    <span>工厂模式是我们最常用的实例化对象模式了，是用工厂方法代替new操作的一种模式。new会使程序增加程序负担，而工厂模式会给你系统带来更大的可扩展性和尽量少的修改量。</span>
+    <pre>
+     &lt;script&gt;
+    //工厂模式
+         function factory(name,age,sex){
+             var obj = {};
+             obj.name = name;
+             obj.age = age;
+             obj.sex = sex;
+             obj.fun = function(){
+                 console.log("工厂方法");
+             }
+             return obj;
+         }
+         var stu = factory("san",10,"男");
+     '&lt;/script&gt;
+    </pre>
+    <a>HTTP状态码</a>
+    <span>200 OK<br/>
+        2XX 请求成功<br/>
+        3XX 网页陈定向<br/>
+        404 页面不存在（not found）<br/>
+        4XX 请求错误<br/>
+        500 服务器遇到问题<br/>
+        505 服务器不支持，或者拒绝支持在请求中使用的 HTTP 版本。<br/>
+        5XX 服务器错误<br/>
+        6XX 服务器错误</span>
+    <a>同源</a>
+    <p>
+        要求(只要有一项不一致，即不是同源/同域)：<br/>
+        1.域名相同（ip地址相同）<br/>
+        2.端口相同<br/>
+        3.协议必须相同
+    </p>
+    <a>握手协议</a>
+    <p>三次握手</p>
+    <span>第一次握手:建立连接时，客户端发送syn包到服务器，并进入SYN_SENT状态，等待服务器确认；<br/>
+        第二次握手：服务器收到syn包，必须确认客户的SYN，同时自己也发送一个SYN包，即SYN+ACK包，此时服务器进入SYN_RECV状态；<br/>
+        第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK，此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。
+    </span>
+    <img src="img/ffa.jpg">
+    <p>四次挥手</p>
+    <span>
+        （1） TCP客户端发送一个FIN，用来关闭客户到服务器的数据传送。<br/>
+        （2） 服务器收到这个FIN，它发回一个ACK，确认序号为收到的序号加1。和SYN一样，一个FIN将占用一个序号。<br/>
+        （3） 服务器关闭客户端的连接，发送一个FIN给客户端。<br/>
+        （4） 客户端发回ACK报文确认，并将确认序号设置为收到序号加1。
+    </span>
+    <img src="img/cbb.jpg">
+    <a>请求头</a>
+    <span>http请求头，HTTP客户程序（例如浏览器），向服务器发送请求的时候必须指明请求类型（一般是GET或者POST）。如有必要，客户程序还可以选择发送其他的请求头。</span>
+    <p>下面是一些最常见的请HTTP请求头概述 :<br/>
+        Host：初始URL中的主机和端口。<br/>Cookie：这是最重要的请求头信息之一<br/>
+        Connection: Keep-Alive; Connection表示客户端与服务连接类型;Keep-Alive表示持久连接;<br/>
+    </p>
+    <pre>
+    xmlhttp.open("POST","ajax_test.asp",true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send("fname=Bill&lname=Gates");
+    </pre>
+</div>
+</body>
+</html>
