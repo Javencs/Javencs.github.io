@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery 文档处理</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;}
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px 20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            line-height: 30px;
+            width: 100%;
+            height: auto;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            width: 100%;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        .box>pre{
+            display: block;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 2em;
+            margin-bottom: 3px;
+        }
+        img{
+            max-width:800px ;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">jQuery 文档处理</h1>
+    <a>1.内部插入</a>
+    <p>append( )---appendTo( )</p>
+    <pre>
+        $("#box").append("&lt;/p&gt;一处水水水水&lt;/p&gt;"); //都是在#box里面的最后添加&lt;/p&gt;
+        $("&lt;/p&gt;一处水水水水&lt;/p&gt;").appendTo("#box");</pre>
+    <p>prepend( )---prependTo( )</p>
+    <pre>
+        $("#box").prepend("&lt;/p&gt;一处水水水水&lt;/p&gt;"); //都是在#box里面的最前添加&lt;/p&gt;
+        $("&lt;/p&gt;一处水水水水&lt;/p&gt;").prependTo("#box");</pre>
+    <a>2.外部插入</a>
+    <p>after( )---insertAfter( )</p>
+    <pre>
+        $("#box").after("&lt;/p&gt;一处水水水水&lt;/p&gt;"); //都是在#box的后面紧跟着添加&lt;/p&gt;
+        $("&lt;/p&gt;一处水水水水&lt;/p&gt;").insertAfter("#box");</pre>
+    <p>before( )---insertBefore( )</p>
+    <pre>
+        $("#box").before("&lt;/p&gt;一处水水水水&lt;/p&gt;");  //都是在#box的前面紧跟着添加&lt;/p&gt;
+        $("&lt;/p&gt;一处水水水水&lt;/p&gt;").insertBefore("#box");</pre>
+    <a>3.包裹</a>
+    <p>wrap( )---unwrap( )</p>
+    <pre>
+       $("#box").wrap("&lt;/p&gt;一处水水水水&lt;/p&gt;");  // 给#box添加父级
+       $("#ps").unwrap();  // 只删除#ps的父级，但父级里的元素依然存在</pre>
+
+    <a>4.删除</a>
+    <p>empty( )</p>
+    <pre>
+       $("#box").empty();  //把#box的内容清空</pre>
+    <p>remove( )</p>
+    <pre>
+       $("#box").remove();  //把整个#box移除</pre>
+    <P>detach( )：与remove( )不同的是，所有绑定的事件、附加的数据等都会保留下来。</P>
+    <pre>
+       $("p").detach(".hello");  //把所有p标签删除
+       $("p").detach();          //把带有hello类的p标签删除</pre>
+    <a>5.克隆</a>
+    <p>clone( )</p>
+    <pre>
+       $("#box").append($("#box").clone());
+       //clone要和.append等合用，选择要clone的对象，然后把它显示到某个位置</pre>
+   <!-- <a>1.DOM是什么？</a>
+    <p>DOM= Document Object Model，文档对象模型<br/>简单来讲，DOM就是一组API（接口）。它将一份结构化文档看做一棵树，这棵树由各种各样的节点构成，也即节点树。</p>
+    <a>2.DOM的目标是什么？</a>
+    <p>首先必须清楚DOM不是专为HTML设计的，它是通用型的标准，为所有标记语言而设计。<br/>
+        其次要清楚并不是只有JavaScript有DOM API，其他的程序设计语言如Java也有对应的DOM API。<br/>
+        总结一句话：DOM标准的目标是让“任何一种程序设计语言”能操控使用“任何一种标记语言”编写出的“任何一份文档”。“操控”具体含义为能通过DOM提供的API对文档的内容、结构、样式进行访问和修改。<br/>
+    </p>
+    <p style="font-weight: bold">DOM分类
+            <p>DOM核心：针对任何结构化文档的标准模型</p>
+            <p>DOM XML ：只针对XML文档的标准模型</p>
+            <p>DOM HTML：只针对HTML文档的标准模型</p>
+    </p>
+    <a>DOM:W3C--国际通用<br/>
+       DOM:Microsoft--IE浏览器适用</a>-->
+</div>
+
+</body>
+</html>

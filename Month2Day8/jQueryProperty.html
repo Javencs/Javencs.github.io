@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery 属性</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;}
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px 20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            color: #333;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            line-height: 40px;
+            background-color: antiquewhite;
+        }
+        .box>pre{
+            display: block;
+            height: auto;
+            width: 100%;
+            color: #333;
+            background-color:#f6f6f6;
+            line-height: 2em;
+            text-indent: 2em;
+            margin-bottom: 3px;
+        }
+        img{
+            max-width:800px ;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">jQuery 属性</h1>
+    <a>1.innerText、innerHTML、value区别</a>
+    <p style="text-indent: 2em">通常情况下，innerText和innerHTML的功能相似，都是设置元素的内容。但是当所写内容带有标签时，两者就出现区别了：innerText会直接在内容上显示标签，而innerHTML会自动识别标签并使用。</p>
+    <pre>div.innerText = "&lt;p&gt;“凡战之要，必先占其将而查其才。”&lt;p/&gt;"</pre>
+    <p>div.innerText显示结果</p>
+    <img src="imgs/39.png"><br/>
+    <img src="imgs/28.png">
+    <br/>
+    <br/>
+    <pre>div.innerHTML = "&lt;p&gt;“凡战之要，必先占其将而查其才。”&lt;p/&gt;"</pre>
+    <p>div.innerHTML显示结果</p>
+    <img src="imgs/55.png"><br/>
+    <img src="imgs/34.png">
+    <p>在jQuery中，html和text也是如此</p>
+    <pre>
+    $('#bin1').html("&lt;p&gt;Hello Word!&lt;/p&gt;");
+        $('#bin2').text("&lt;p&gt;Hello Word!&lt;/p&gt;");
+        $('#input1').val("&lt;p&gt;Hello Word!&lt;/p&gt;");</pre>
+    <p>注意：value和jQuery的val只适用于input标签</p>
+
+    <a>2.attr和removeAttr</a>
+    <p>attr：设置或返回被选元素的属性值。<br/>
+        removeAttr:从每一个匹配的元素中删除一个属性</p>
+    <pre>
+        $('#img1').attr("src","../img/1.png");  //为#img的元素设置src属性(注意：attr里的属性写错不会报错)
+        $('#img1').removeAttr("src");  //为#img的元素移除src属性
+    </pre>
+
+    <a>3.addclass、removeClass和toggleClass</a>
+    <p>addclass：为每个匹配的元素添加指定的类名。<br/>
+        removeClass：从所有匹配的元素中删除全部或者指定的类。<br/>
+        toggleClass：如果存在（不存在）就删除（添加）一个类。
+    </p>
+    <pre>
+        $("p").addClass("selected");
+        $("p").addClass("selected1 selected2");
+        $("p").removeClass("selected");
+        $("p").toggleClass("selected");
+    </pre>
+
+
+
+
+
+
+<!--
+&lt;!&ndash;<div id="bin" style="color: #fff"></div>&ndash;&gt;
+    <script>
+        //var bin = document.getElementById('bin');
+        //bin.innerText = "<p>“凡战之要，必先占其将而查其才。”</p>"
+        //bin.innerHTML = "<p>“凡战之要，必先占其将而查其才。”</p>"
+//        $(function(){
+//            $('#bin1').html("<p>Hello Word!</p>");
+//            $('#bin2').text("<p>Hello Word!</p>");
+//            $('#input1').val("<p>Hello Word!</p>");
+//        })
+    </script>-->
+
+</div>
+
+</body>
+</html>

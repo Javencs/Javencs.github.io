@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DOM</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;}
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px 20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            line-height: 30px;
+            width: 100%;
+            height: auto;
+            margin: 6px 0;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            width: 100%;
+            line-height: 40px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">DOM</h1>
+    <a>1.DOM是什么？</a>
+    <p>DOM= Document Object Model，文档对象模型<br/>简单来讲，DOM就是一组API（接口）。它将一份结构化文档看做一棵树，这棵树由各种各样的节点构成，也即节点树。</p>
+    <a>2.DOM的目标是什么？</a>
+    <p>首先必须清楚DOM不是专为HTML设计的，它是通用型的标准，为所有标记语言而设计。<br/>
+        其次要清楚并不是只有JavaScript有DOM API，其他的程序设计语言如Java也有对应的DOM API。<br/>
+        总结一句话：DOM标准的目标是让“任何一种程序设计语言”能操控使用“任何一种标记语言”编写出的“任何一份文档”。“操控”具体含义为能通过DOM提供的API对文档的内容、结构、样式进行访问和修改。<br/>
+    </p>
+    <p style="font-weight: bold">DOM分类
+            <p>DOM核心：针对任何结构化文档的标准模型</p>
+            <p>DOM XML ：只针对XML文档的标准模型</p>
+            <p>DOM HTML：只针对HTML文档的标准模型</p>
+    </p>
+    <a>DOM:W3C--国际通用<br/>
+       DOM:Microsoft--IE浏览器适用</a>
+</div>
+
+</body>
+</html>
