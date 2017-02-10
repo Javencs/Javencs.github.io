@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery Event</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;}
+        .box{
+            width: 900px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            color: #333;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            height: auto;
+            font-weight: bold;
+            line-height: 40px;
+            background-color: antiquewhite;
+        }
+        span{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            color: #333;
+            width: 100%;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        pre{
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            color: #333;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+        }
+
+        img{
+        	max-width:800px ;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">jQuery Event</h1>
+    <a>Event Model</a>
+    <p>Event Capturing(捕获型事件)</p>
+    <span>它与冒泡型刚好相反，由DOM树最顶层元素一直到最精确的元素.</span>
+    <p>Event Bubbling(冒泡型事件)</p>
+    <span>顾名思义，事件像个水中的气泡一样一直往上冒，直到顶端。从DOM树型结构上理解，就是事件由叶子节点沿祖先结点一直向上传递直到根节点；从浏览器界面视图HTML元素排列层次上理解就是事件由具有从属关系的最确定的目标元素一直传递到最不确定的目标元素.冒泡技术.冒泡型事件的基本思想,事件按照从特定的事件目标开始到最不确定的事件目标.</span>
+    <p>DOM</p>
+    <span>开发者们最初采用的是不同的事件传播模型。DOM标准规定应该同时使用这两种策略：首先，事件要从一般到具体进行捕获，然后事件再过冒泡返回DOM树的顶层。而事件处理程序可以注册到这个过程中的任何一部分。</span>
+    <p>注意：并不是所有的浏览器都为了与新标准保持一致而进行了更新。对于那些支持捕获的浏览器来说，通常必须明确启用才行。为了提供跨浏览器的一致性，jQuery始终在模型的冒泡阶段注册处理程序。因此，我们总是可以假定最具体的元素会首先获得响应事件的机会。</p>
+    <a>事件分类</a>
+    <a>1.与浏览器相关</a>
+    <p>ready(在DOM加载完成时运行的代码)</p>
+    <pre>
+    //方法一
+    $(document).ready(function(){
+        // 在这里写你的代码...
+    });
+    //方法二
+    $(function($) {
+        // 你可以在这里继续使用$作为别名...
+    });
+    </pre>
+    <p>scroll(当用户滚动指定的元素时)</p>
+    <pre>
+    //当页面滚动条变化时，执行的函数:
+    $(window).scroll( function() {
+        /* ...do something... */
+    });
+
+    //对元素滚动的次数进行计数：
+    $("div").scroll(function() {
+        $("span").text(x+=1);
+    });
+    </pre>
+    <p>resize(当调整浏览器窗口的大小时，发生 resize 事件。)</p>
+    <pre>
+    $(window).resize(function(){
+        /* ...do something... */
+    });
+    </pre>
+    <a>2.鼠标相关</a>
+    <p>click(点击事件)</p>
+    <pre>
+    $("p").click( function (){   //将页面内所有段落点击后隐藏
+        $(this).hide();
+    });
+
+    $("p").click();  //触发页面内所有段落的点击事件
+    </pre>
+    <pre>
+    //click模仿dblclick
+    $(function(){
+        var data;
+        var firstTime;
+        var secondTime;
+        var index = 0;
+        $('p').click(function(){
+            index+=1;
+            if(index<2){
+                data = new Date();
+                firstTime = data.getTime();
+                console.log("firstTime"+firstTime);
+            }else{
+                data = new Date();
+                secondTime = data.getTime();
+                if(secondTime-firstTime<1000){  //判断是否是双击
+                    console.log("双击！");
+                }else{
+                    firstTime = 0;
+                    secondTime = 0;
+                }
+            }
+        })
+    })
+    </pre>
+    <p>dblclick(当鼠标指针停留在元素上方，然后按下并松开鼠标左键时，就会发生一次 click。在很短的时间内发生两次 click，即是一次 double click 事件。)</p>
+    <pre>
+    $("p").dblclick( function (){
+        alert("Hello World!");
+    });
+    </pre>
+    <p>hover(一个模仿悬停事件（鼠标移动到一个对象上面及移出这个对象）的方法。当鼠标移动到一个匹配的元素上面时，会触发指定的第一个函数。当鼠标移出这个元素时，会触发指定的第二个函数。)</p>
+    <pre>
+    $("td").hover(
+        function () {
+            $(this).addClass("hover");
+        },
+        function () {
+            $(this).removeClass("hover");
+        }
+    );
+    </pre>
+    <p>blur(当元素失去焦点时触发 blur 事件. 可以是鼠标行为，也可以是按tab键离开的. )</p>
+    <pre>
+    $("p").blur( function () {
+        alert("Hello World!");
+    });
+    </pre>
+    <P>focus(当元素获得焦点时)</P>
+    <pre>
+    $(document).ready(function(){
+      $("#login").focus();    //当页面加载后将 id 为 'login' 的元素设置焦点:
+    });
+
+    $("input[type=text]").focus(function(){
+      this.blur();    //使人无法使用文本框
+    });
+    </pre>
+    <p>mousedown(当鼠标指针移动到元素上方，并按下鼠标按键时)</p>
+    <pre>
+    $("button").mousedown(function(){
+      $("p").slideToggle();     //当按下鼠标按钮时，隐藏或显示元素：
+    });
+    </pre>
+    <p>mousemove(鼠标指针在指定的元素中移动时)</p>
+    <pre>
+    $(document).mousemove(function(e){
+        var x = e.clientX-$('img').width()/2 +'px';     //图片跟随鼠标
+        var y = e.clientY-$('img').height()/2 +'px';
+        var obj = {"left":x,"top":y};
+        $('img').css(obj);
+    });
+    </pre>
+    <p>mouseout(鼠标指针从元素上移开时)</p>
+    <pre>
+    $("p").mouseout(function(){
+      $("p").css("background-color","#E9E9E4");   //当鼠标从元素上移开时，改变元素的背景色：
+    });
+    </pre>
+    <p>mouseover(鼠标指针位于元素上方时)</p>
+    <pre>
+    $("p").mouseover(function(){
+      $("p").css("background-color","yellow");    //当鼠标指针位于元素上方时时，改变元素的背景色：
+    });
+    </pre>
+    <p>mouseup(在元素上松开鼠标按钮时)</p>
+    <pre>
+    $("button").mouseup(function(){
+      $("p").slideToggle();    //当松开鼠标按钮时，隐藏或显示元素：
+    });
+    </pre>
+    <a>3.键盘相关</a>
+    <p>keydown(键盘或按钮被按下时)</p>
+    <pre>
+    $(window).keydown(function(e){
+        console.log(e.keyCode);   //获取当前按下的Unicode值
+    });
+    </pre>
+    <p>keypress(键盘或按钮被按下时)</p>
+    <pre>
+    $("input").keydown(function(){
+        $("span").text(i+=1);  //计算在输入域中的按键次数
+    });
+    </pre>
+    <p>keyup(当按钮/按键被松开)</p>
+    <pre>
+    $("input").keyup(function(){
+      $("input").css("background-color","#D6D6FF");  //当松开按键时，改变文本域的颜色：
+    });
+    </pre>
+    <a>事件处理</a>
+    <a>1.绑定事件</a>
+    <p>.on( events [, selector ] [, data ], handler(eventObject) ) 在选择元素上绑定一个或多个事件的事件处理函数。</p>
+    <span>一个简单的事件绑定如 $('button').on('click',function(){}); 与bind()无二样。<br/>
+        在需要为较多的元素绑定事件的时候，优先考虑事件委托，可以带来性能上的好处。</span>
+    <pre>
+    &lt;body&gt;
+    &lt;p&gt;test&lt;/p&gt;
+    &lt;button&gt;test&lt;/button&gt;
+    &lt;/body&gt;
+    &lt;script&gt;
+    $(function(){
+        $(document).on('click',function(e){
+    //将click事件绑定在document对象上，页面上任何元素发生的click事件都冒泡到document对象上得到处理。
+                console.log(e.target.targetName + 'is clicked;');
+        })
+    })
+    &lt;/script&gt;
+        //输出
+        //P is clicked;
+        //Button is clicked;
+        //HTML is clicked;
+    </pre>
+    <span>注意到.on()的描述中第二个可选参数：selector。</span>
+    <pre>
+    &lt;body&gt;
+    &lt;p&gt;test&lt;/p&gt;
+    &lt;button&gt;test&lt;/button&gt;
+    &lt;/body&gt;
+    &lt;script&gt;
+        $(function(){
+            $(document).on('click','button',function(e){
+//当事件冒泡到document对象时，检测事件的target，如果与传入的选择符（这里是button）匹配，就触发事件，否则不触发。
+                console.log(e.target.targetName + 'is clicked;');
+            })
+        })
+    &lt;/script&gt;
+        //输出
+        //BUTTON is clicked;
+    </pre>
+    <p>bind(type,[data],fn) 为每个匹配元素的特定事件绑定事件处理函数。</p>
+    <pre>
+    $("p").bind("click", function(){
+      alert( $(this).text() );    //当每个段落被点击的时候，弹出其文本
+    });
+
+    $('#foo').bind('mouseenter mouseleave', function() {
+      $(this).toggleClass('entered');    //同时绑定多个事件类型
+    });
+
+    $("button").bind({
+      click:function(){
+          $("p").slideToggle();},      //同时绑定多个事件类型/处理程序
+          mouseover:function(){$("body").css("background-color","red");},
+          mouseout:function(){$("body").css("background-color","#FFFFFF");}
+    });
+    </pre>
+    <p>hover(over, out) 模拟徘徊，例如将鼠标移动到一个对象上，并将鼠标从该对象上移开</p>
+    <span>例子请看前方hover</span>
+    <P>trigger()  触发被选元素的指定事件类型</P>
+    <pre>
+    $("p").click( function (event, a, b) {    //给一个事件传递参数
+      // 一个普通的点击事件时，a和b是undefined类型
+      // 如果用下面的语句触发，那么a指向"foo",而b指向"bar"
+    } ).trigger("click", ["foo", "bar"]);
+    </pre>
+    <a>2.移除事件</a>
+    <p>unbind()  （bind()的反向操作，从每一个匹配的元素中删除绑定的事件。）</p>
+    <pre>
+    $("p").unbind()    //把所有段落的所有事件取消绑定
+
+    $("p").unbind( "click" )   //将段落的click事件取消绑定
+
+    var foo = function () {
+          // 处理某个事件的代码
+    };
+    //删除特定函数的绑定，将函数作为第二个参数传入
+    $("p").bind("click", foo); // ... 当点击段落的时候会触发 foo
+    $("p").unbind("click", foo); // ... 再也不会被触发 foo
+    </pre>
+    <p>off()  在选择元素上移除一个或多个事件的事件处理函数。</p>
+    <pre>
+    $("p").off( "click", "**" )  //将所有段落的click事件取消(要删除非委托元素上的所有事件，使用特殊值 "**" 。)
+    var foo = function () {
+      // 处理某个事件的代码
+    };
+    // ... 当点击段落的时候会触发 foo ...
+    $("body").on("click", "p", foo);
+    // ... 再也不会被触发 foo.
+    $("body").off("click", "p", foo);
+    </pre>
+
+
+</div>
+<!--<script>
+    $(function(){
+        $(document).on('click',function(e){
+            console.log(e.target.targetName + 'is clicked;');
+        })
+    })
+</script>-->
+</body>
+</html>
