@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery AJAX</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('mainmenu1.cur'),auto;}
+        .box{
+            width: 900px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+            text-indent: 1em;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            font-weight: bold;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        span{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            width: 100%;
+            line-height: 30px;
+            background-color: antiquewhite;
+            display: block;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">jQuery AJAX</h1>
+    <p>AJAX：异步请求服务器</p>
+    <a>1.load() 方法</a>
+    <p>作用：</p>
+    <span>load() 方法从服务器加载数据，并把返回的数据放入被选元素中。<br/>
+        默认使用 GET 方式([data]参数有传递数据进去，会自动转换为POST方式)
+    </span>
+    <p>参数：</p>
+    <span>
+        url (String) : 请求的HTML页的URL地址<br/>
+        data (Map) : (可选参数) 发送至服务器的 key/value 数据<br/>
+        callback (Callback) : (可选参数) 请求完成时(不需要是success的)的回调函数
+    </span>
+    <p>通用格式:$("#links").load("http://www.ex.com");</p>
+    <pre>$('#btn').click(function(){
+        $('#main').load("test.txt");  //点击#btn，加载test.txt的文件至#main里
+    })</pre>
+
+    <a>2.get() 方法</a>
+    <p>作用：</p>
+    <span>通过get请求载入信息<br/>
+        发送数据给服务器
+    </span>
+    <p>参数：</p>
+    <span>
+        url (String) : 发送请求的URL地址<br/>
+        data (Map) : (可选) 要发送给服务器的数据，以 Key/value 的键值对形式表示：<br/>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp地址栏：ex.jsp?username=Hungking&pwd=123456&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{key1:value1,key2:value2}<br/>
+        callback (Function) : (可选) 载入成功时回调函数(只有当Response的返回状态是success才是调用该方法)<br/>
+        type:xml,html,json,text...<br/>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp跨域：jsonp
+    </span>
+    <p>通用格式:$.get("ex.php",{name:Hungking,pwd:123456});</p>
+    <pre>$("#btn").click(function(){
+        $.get("test.txt",function(){
+            alert("加载结束");
+        });
+    });</pre>
+
+    <a>3. post() 方法</a>
+    <p>作用：</p>
+    <span>通过get请求载入信息<br/>
+        发送数据给服务器
+    </span>
+    <p>参数：</p>
+    <span>
+        url:发送请求地址<br/>
+        data:待发送 Key/value 参数<br/>
+        callback (Function) : (可选) 载入成功时回调函数(只有当Response的返回状态是success才是调用该方法)<br/>
+        type:xml,html,json,text...<br/>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp跨域：jsonp
+    </span>
+    <p>通用格式:$.get("ex.php",{name:Hungking,pwd:123456});</p>
+    <pre>$("#btn").click(function(){
+        $.post("test.txt",function(){
+            alert("加载结束");
+        });
+    });</pre>
+
+
+    <a>4. ajax() 方法</a>
+    <p>作用：</p>
+    <span>在不重新加载整个页面的情况下，与服务器交换数据并更新部分网页发送数据给服务器</span>
+    <p>常用参数：</p>
+    <span>
+        url:一个用来包含发送请求的URL字符串。<br/>
+        type:GET/POST<br/>
+        dataType:jsonxml,html,json,text...<br/>
+        type:xml,html,json,text...<br/>
+        data:""<br/>
+        success:function(msg){}<br/>
+        error:function(error){}
+    </span>
+    <pre>//加载文件，并以表格形式展现
+$(function(){
+$('#btn').click(function(){
+    $.ajax({
+        url:"test.json",
+        type:"GET",
+        dataType:"json",
+        data:"",
+        success:function(msg){
+            console.log("服务器返回成功：");
+            console.log(msg);
+            var pageNum = msg.pageNum;
+            var pageTotal = msg.pageTotal;
+            var dataTotal = msg.dataTotal;
+            var data = msg.list;
+            if(data){
+                var l = data.length;
+                var str = '&lt;table border="1px solid black"&gt;&lt;thead&gt;&lt;th&gt;姓名&lt;/th&gt;&lt;th&gt;性别&lt;/th&gt;&lt;th&gt;出生日期&lt;/th&gt;&lt;/thead&gt;';
+    for(var i = 0;i&lt;l;i++){
+    var obj = data[i];
+    str+='&lt;tr&gt;';
+        for(var j in obj) {
+        str += '&lt;td&gt;' + obj[j] + '&lt;/td&gt;';
+        }
+        str +='&lt;/tr&gt;';
+    }
+    str +="&lt;/table&gt;";
+                $('#main').html(str);
+
+            }else{
+                alert("数据为空！");
+            }
+        },
+        error:function(error){
+            console.log("服务器返回失败：");
+            console.log(error);
+        }
+    });
+});</pre>
+
+</div>
+</body>
+</html>
