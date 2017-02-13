@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>每日总结</title>
 		<!--<script src="" type="text/javascript" charset="utf-8"></script>-->
 		<style>
-		*{margin: 0;padding: 0;list-style: none;background-color:#010101 }
+		*{margin: 0;padding: 0;list-style: none;background-color:#010101;cursor:url('mainmenu1.cur'),auto;font-family: "微软雅黑"; }
 		.top{
 			width: 100%;
 			height: 130px;
@@ -23,7 +23,16 @@
             height: 1000px;
             background:url(img/timg.jpg) no-repeat;
             background-size:100% 100% ;
-			}
+		}
+        .box>ul>li>a{
+            background-color:#f7cdd1 ;
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .box>ul>li>a:hover{
+            text-decoration: underline;
+        }
         .mian{
         	width: 280px;
         	height: auto;
@@ -63,7 +72,6 @@
         	text-align: center;
         	height: 30px;
         	line-height: 30px;
-        	font-family: "微软雅黑";
         	font-size: 15px;
         	color: #010101;
         	font-weight: 800;
@@ -83,35 +91,16 @@
 		<div class="top"></div>
 		<div class="box">
 			<ul>
-			  <li>2017/01/09</li>
-			  <li>2017/01/10</li>
-			  <li>2017/01/11</li>
-			  <li>2017/01/12</li>
+			  <li><a href="jQuery.html">2017/02/07</a></li>
+			  <li><a href="Month2Day8/jQueryDOM.html">2017/01/08</a></li>
+			  <li><a href="Month2Day9.html">2017/01/09</a></li>
+			  <li><a href="Month2Day10.html">2017/01/10</a></li>
             </ul>
             <!--左部-->
             <div class="mainBox1">
                 <div class="mian">
-                    <p >2017/01/09-周静雯-工具介绍总结</p>
-                    <a href="HBuilder.html">1.HBuilder</a>
-                    <a href="Mayun.html">2.码云</a>
-                    <a href="GitHub.html">3.GitHub</a>
-                </div>
-                <div class="mian">
-                    <p >2017/01/11 原型与原型链</p>
-                    <a href="proto.html">1.原型与原型链</a>
-                </div>
-                <div class="mian">
-                    <p >2017/01/13 </p>
-                    <a href="Month1Day13/Month1Day13canves.html">Canves 画布</a>
-                </div>
-                <div class="mian">
-                    <p >2017/01/17 音频和视频 </p>
-                    <a href="Month1Day17/audio.html">1.audio</a>
-                    <a href="Month1Day17/video.html">2.video</a>
-                </div>
-                <div class="mian">
-                    <p >2017/02/7 </p>
-                    <a href="jQuery.html">jQuery</a>
+                    <p style="color: crimson">2017/02/10 jQuery</p>
+                    <a href="Month2Day10.html">jQuery Animation</a>
                 </div>
                 <div class="mian">
                     <p >2017/02/8 jQuery </p>
@@ -119,27 +108,36 @@
                     <a href="Month2Day8/DOM.html">2.DOM</a>
                     <a href="Month2Day8/jQueryDOM.html">3.jQuery 文档处理</a>
                 </div>
+                <div class="mian">
+                <p >2017/02/7 </p>
+                <a href="jQuery.html">jQuery</a>
+                </div>
+                <div class="mian">
+                    <p >2017/01/17 音频和视频 </p>
+                    <a href="Month1Day17/audio.html">1.audio</a>
+                    <a href="Month1Day17/video.html">2.video</a>
+                </div>
+                <div class="mian">
+                    <p >2017/01/13 </p>
+                    <a href="Month1Day13/Month1Day13canves.html">Canves 画布</a>
+                </div>
+                <div class="mian">
+                    <p >2017/01/11 原型与原型链</p>
+                    <a href="proto.html">1.原型与原型链</a>
+                </div>
+                <div class="mian">
+                    <p >2017/01/09-周静雯-工具介绍总结</p>
+                    <a href="HBuilder.html">1.HBuilder</a>
+                    <a href="Mayun.html">2.码云</a>
+                    <a href="GitHub.html">3.GitHub</a>
+                </div>
             </div>
 
             <!--右部-->
             <div class="mainBox1">
                 <div class="mian">
-                    <p >2017/01/10 js回顾总结</p>
-                    <a href="Month1Day10/base.html">1.JS基础</a>
-                    <a href="Month1Day10/function.html">2.函数的声明</a>
-                    <a href="Month1Day10/this.html">3.this指向</a>
-                    <a href="Month1Day10/work.html">4.作用域</a>
-                </div>
-
-                <div class="mian">
-                    <p >2017/01/12 </p>
-                    <a href="Month1Day12/event.html">1.JS Array,Event,排序回顾</a>
-                    <a href="Month1Day12/error.html">2.Error对象</a>
-                    <a href="Month1Day12/touch.html">3.触摸事件</a>
-                </div>
-                <div class="mian">
-                    <p >2017/01/16 </p>
-                    <a href="Month1Day16/Day16canves.html">Canves 续</a>
+                    <p >2017/02/9 jQuery</p>
+                    <a href="Month2Day9.html">jQuery Event</a>
                 </div>
                 <div class="mian">
                     <p >2017/02/6 AJAX </p>
@@ -148,8 +146,21 @@
                     <a href="Month2Day6/ajax面试题.html">3.AJAX经典面试题</a>
                 </div>
                 <div class="mian">
-                    <p >2017/02/9 jQuery</p>
-                    <a href="Month2Day9.html">jQuery Event</a>
+                    <p >2017/01/16 </p>
+                    <a href="Month1Day16/Day16canves.html">Canves 续</a>
+                </div>
+                <div class="mian">
+                    <p >2017/01/12 </p>
+                    <a href="Month1Day12/event.html">1.JS Array,Event,排序回顾</a>
+                    <a href="Month1Day12/error.html">2.Error对象</a>
+                    <a href="Month1Day12/touch.html">3.触摸事件</a>
+                </div>
+                <div class="mian">
+                    <p >2017/01/10 js回顾总结</p>
+                    <a href="Month1Day10/base.html">1.JS基础</a>
+                    <a href="Month1Day10/function.html">2.函数的声明</a>
+                    <a href="Month1Day10/this.html">3.this指向</a>
+                    <a href="Month1Day10/work.html">4.作用域</a>
                 </div>
             </div>
 		</div>
