@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>test1</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('mainmenu1.cur'),auto;}
+        .box{
+            width: 900px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            font-weight: bold;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        span{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            width: 100%;
+            line-height: 30px;
+            background-color: antiquewhite;
+            display: block;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+
+        img{
+        	max-width:800px ;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">test1</h1>
+    <a>1.jquery里的$有什么作用？</a>
+    <span>答：$就是jQuery的别称，是jQuery库提供的一个函数。<br/>
+        1、可以通过$ () 里的参数进行查找和选择html文档中的元素
+        <pre>
+            $('#tmp');//这是查找dom的id等于tmp的元素</pre>
+        2.访问$中定义的函数
+        <pre>
+            $.ajax(options)</pre>
+    </span>
+    <a>2.jquery $(document).ready()和window.onload的区别</a>
+    <span>1.执行时间<br/>
+        window.onload必须等到页面内包括图片的所有元素加载完毕后才能执行。<br/>
+        $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕。<br/>
+        2.编写个数不同<br/>
+        window.onload不能同时编写多个，如果有多个window.onload方法，只会执行一个<br/>
+        $(document).ready()可以同时编写多个，并且都可以得到执行<br/>
+        3.简化写法<br/>
+        window.onload没有简化写法<br/>
+        $(document).ready(function(){})可以简写成$(function(){});
+    </span>
+    <a>3.用jQuery实现点击按钮弹出一个对话框</a>
+    <pre>
+        $(function(){
+            $(".btn").cilck(function(){
+                alter("你点击了按钮！")
+            })
+        });
+    </pre>
+    <a>4.Javascript的this和jQuery的$(this)一样吗？</a>
+    <span>
+        不一样。 this是javascript自身的 语法关键字，它指向一个javascript对象，所以可以使用所指向的目标javascript对象所拥有的方法。但他自己不是一个普通的变量，所以你无法自己定义一个变量叫this所以为了使用jQuery对象的方法，你必须传入jQuery函数$(this),包装成为一个可以使用jquery方法的jquery对象
+    </span>
+    <a>5.用jQuery实现用图片替换系统默认的鼠标指针的主要代码</a>
+    <pre>
+        $(function(){
+            $("document.body").css("cursor","url('mainmenu1.cur'),auto;")
+        });
+    </pre>
+</div>
+</body>
+</html>
