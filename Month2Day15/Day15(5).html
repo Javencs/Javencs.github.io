@@ -69,15 +69,15 @@
 <div class="box">
     <h1 style="background-color: antiquewhite;font-size: 28px">HTML5——表单域+交互标记</h1>
     <a>表单域</a>
-    <p><b>&lt;datalist&gt;</b>：用于描述文档或文档某个部分的细节。<b>目前只有 Chrome 和 Safari 6 支持&lt;datalist&gt;标签。</b>
-        <a href="http://www.w3school.com.cn/tags/tag_details.asp" target="_blank">具体&lt;datalist&gt;</a></p>
-    <pre>   &lt;details&gt;
-         &lt;summary&gt;Copyright 2011.&lt;/summary&gt;
-         &lt;p&gt;All pages and graphics on this web site are the property of W3School.&lt;/p&gt;
-    &lt;/details&gt;</pre>
-    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_details" target="_blank">查看结果</a></p>
-
-
+    <p><b>&lt;datalist&gt;</b>：标签定义选项列表。请与 input 元素配合使用该元素，来定义 input 可能的值。datalist 及其选项不会被显示出来，它仅仅是合法的输入值列表。请使用 input 元素的 list 属性来绑定 datalist。
+        <a href="http://www.w3school.com.cn/tags/tag_datalist.asp" target="_blank">具体&lt;datalist&gt;</a></p>
+    <pre>&lt;input id="myCar" list="cars" /&gt;
+        &lt;datalist id="cars"&gt;
+        &lt;option value="BMW"&gt;
+        &lt;option value="Ford"&gt;
+        &lt;option value="Volvo"&gt;
+    &lt;/datalist&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_datalist" target="_blank">查看结果</a></p>
 
     <p><b>&lt;keygen&gt;</b>：规定用于表单的密钥对生成器字段。当提交表单时，私钥存储在本地，公钥发送到服务器。
         <a href="http://www.w3school.com.cn/tags/tag_keygen.asp" target="_blank">具体&lt;keygen&gt;</a></p>
@@ -118,12 +118,60 @@
 
     <a>交互标记</a>
 
-    <p><b>&lt;details&gt;</b>：是 HTML 5 中的新标签,标签标示任务的进度（进程）。
-        <a href="http://www.w3school.com.cn/tags/tag_progress.asp" target="_blank">具体&lt;details&gt;</a>
+    <p><b>&lt;details&gt;</b>：用于描述有关文档或文档片段的详细信息。<b>目前只有 Chrome 和 Safari 6 支持&lt;details&gt;标签。</b>
+        <a href="http://www.w3school.com.cn/tags/tag_details.asp" target="_blank">具体&lt;details&gt;</a></p>
+    <pre>   &lt;details&gt;
+         &lt;summary&gt;Copyright 2011.&lt;/summary&gt;
+         &lt;p&gt;All pages and graphics on this web site are the property of W3School.&lt;/p&gt;
+    &lt;/details&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_details" target="_blank">查看结果</a></p>
+
+    <p><b>&lt;summary&gt;</b>：是 HTML 5 中的新标签, 代表 &lt;details&gt; 元素的综述或标题，summary” 元素应该是 “details” 元素的第一个子元素。<b>只有 Chrome 以及 Safari 6 支持 &lt;summary&gt; 标签。</b>
+        <a href="http://www.w3school.com.cn/tags/tag_summary.asp" target="_blank">具体&lt;summary&gt;</a>
     </p>
-    <pre>//正在进行的下载：
-        &lt;progress value="22" max="100"&gt;&lt;/progress&gt;</pre>
-    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_progress" target="_blank">查看结果</a></p>
+    <pre>&lt;details&gt;
+        &lt;summary&gt;HTML 5&lt;/summary&gt;
+        This document teaches you everything you have to learn about HTML 5.
+    &lt;/details&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_summary" target="_blank">查看结果</a></p>
+
+    <p><b>&lt;menuitem&gt;</b>：HTML5中的新标签,代表一个用户可以点击的菜单项。<b>只有Firefox 8.0 以及更高的版本支持&lt;menuitem&gt;标签。</b>
+        <a href="http://www.w3school.com.cn/tags/tag_menuitem.asp" target="_blank">具体&lt;menuitem&gt;</a>
+    </p>
+    <pre>&lt;menu type="context" id="mymenu"&gt;
+        &lt;menuitem label="Refresh" onclick="window.location.reload();" icon="ico_reload.png"&gt;
+            &lt;/menuitem&gt;
+        &lt;menu label="Share on..."&gt;
+            &lt;menuitem label="Twitter" icon="ico_twitter.png"
+                      onclick="window.open('//twitter.com/intent/tweet?text='+window.location.href);"&gt;
+            &lt;/menuitem&gt;
+            &lt;menuitem label="Facebook" icon="ico_facebook.png"
+                      onclick="window.open('//facebook.com/sharer/sharer.php?u='+window.location.href);"&gt;
+            &lt;/menuitem&gt;
+        &lt;/menu&gt;
+        &lt;menuitem label="Email This Page"
+                  onclick="window.location='mailto:?body='+window.location.href;"&gt;&lt;/menuitem&gt;
+        &lt;/menu&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_menuitem" target="_blank">查看结果</a></p>
+
+    <p><b>&lt;menu&gt;</b>：标签定义命令的列表或菜单,代表菜单，呈现了一组用户可执行或激活的命令,这既包含了可能出现在屏幕顶端的列表菜单，也包含了那些隐藏在按钮之下、当点击按钮后显示出来的文本菜单。<b>目前所有主流浏览器都不支持&lt;menu&gt;标签。</b>
+        <a href="http://www.w3school.com.cn/tags/tag_menu.asp" target="_blank">具体&lt;menu&gt;</a>
+    </p>
+
+    <a>其他</a>
+
+    <p><b>&lt;command&gt;</b>：定义命令按钮，比如单选按钮、复选框或按钮<b>只有 Internet Explorer 9 （更早或更晚的版本都不支持）支持&lt;command&gt;标签.</b>
+        <a href="http://www.w3school.com.cn/tags/tag_command.asp" target="_blank">具体&lt;command&gt;</a>
+    </p>
+    <pre>&lt;menu&gt;
+        &lt;command onclick="alert('Hello World')"&gt;
+            Click Me!&lt;/command&gt;
+    &lt;/menu&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_command" target="_blank">查看结果</a></p>
+    <p><b>ARIA</b>:Accessible Rich Internet Applications<br/>ARIA是W3C的一个独立规范，帮助Web应用程序和Web页面变得更具可访问性;ARIA主要是为了提升网页的可用性，网页对残疾人士的无障碍化<br/>HTML5已经开始使用ARIA，并且W3C发布的很多其他标准也开始使用ARIA<br/>ARIA 是对 HTML 语义化的补充。它具备比现有的 HTML 元素和属性更完善的表达能力，并让你页面中元素的关系和含义更明确<br/>ARIA 规范为浏览器和解析 HTML 文档的辅助性技术提供了一种可以让人们以多种方式访问和使用 Web 的标准方法.
+        <a href="http://web.jobbole.com/85489/" target="_blank">具体ARIA</a>
+    </p>
+
 </div>
 </body>
 </html>
