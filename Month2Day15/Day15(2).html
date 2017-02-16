@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        img{
+            max-width:800px ;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">HTML5——章节结构</h1>
+    <a>章节结构</a>
+    <p><b>&lt;section&gt;</b>：定义文档中的一个章节，一般来说会有包含一个 heading(类似div标签)</p>
+    <pre>&lt;section&gt;
+        &lt;h2&gt;若水神君嫁去东海&lt;/h2&gt;
+        &lt;article&gt;
+            文章内容
+        &lt;/article&gt;
+    &lt;/section&gt;</pre>
+
+    <p><b>&lt;nav&gt;</b>：定义一个含有多个超链接的区域，这个区域包含转到其他页面，或者页面内部其他部分的链接列表，即（导航）。</p>
+    <pre>&lt;nav&gt;
+        &lt;a href="index.asp"&gt;Home&lt;/a&gt;
+        &lt;a href="html5_meter.asp"&gt;Previous&lt;/a&gt;
+        &lt;a href="html5_noscript.asp"&gt;Next&lt;/a&gt;
+    &lt;/nav&gt;</pre>
+
+    <p><b>&lt;article&gt;</b>：表示文档、页面、应用或网站中的独立结构，其意在成为可独立分配的或可复用的结构</p>
+    <pre>&lt;section&gt;
+        &lt;h2&gt;若水神君嫁去东海&lt;/h2&gt;
+        &lt;article&gt;
+            文章内容
+        &lt;/article&gt;
+    &lt;/section&gt;</pre>
+
+    <p><b>&lt;header&gt;</b>：定义页面或章节的头部。它经常包含logo、页面标题和导航性的目录</p>
+    <pre>&lt;header&gt;Three is logo!&lt;/header&gt;</pre>
+
+    <p><b>&lt;footer&gt;</b>：定义页面或章节的尾部。它经常包含版权信息、法律信息链接和反馈建议用的地址</p>
+    <pre>&lt;footer&gt;&copy;版权归我所有 联系：tcsj@tcsj.com&lt;/footer&gt;</pre>
+
+    <p><b>&lt;main&gt;</b>：(不推荐)定义文档中主要或重要的独一无二的内容。一个文档中不能出现一个以上的，不能在article,aside,footer,header或者nav中包含main</p>
+    <pre>   &lt;main&gt;
+        &lt;h1&gt;Web Browsers&lt;/h1&gt;
+        &lt;p&gt;Google Chrome、Firefox 以及 Internet Explorer 是目前最流行的浏览器。&lt;/p&gt;
+        &lt;article&gt;
+            &lt;h1&gt;Google Chrome&lt;/h1&gt;
+            &lt;p&gt;Google Chrome 是由 Google 开发的一款免费的开源 web 浏览器，于 2008 年发布。&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;</pre>
+
+    <p><b>&lt;figure&gt;</b>：用作文档中插图的图像</p>
+    <pre>   &lt;figure&gt;
+        &lt;p&gt;黄浦江上的的卢浦大桥&lt;/p&gt;
+        &lt;img src="example.jpg" width="350"/&gt;
+    &lt;/figure&gt;</pre>
+
+    <p><b>&lt;figcaption&gt;</b>：代表一个图例的说明</p>
+    <pre>   &lt;figure&gt;
+        &lt;figcaption&gt;黄浦江上的的卢浦大桥&lt;/figcaption&gt;
+        &lt;img src="example.jpg" width="350"/&gt;
+    &lt;/figure&gt;</pre>
+
+    <p><b>&lt;hgroup&gt;</b>：用于对网页或区段（section）的标题进行组合</p>
+    <pre>   &lt;hgroup&gt;
+        &lt;h1&gt;Welcome to my WWF&lt;/h1&gt;
+        &lt;h2&gt;For a living planet&lt;/h2&gt;
+        &lt;h3&gt;黄浦江上的的卢浦大桥&lt;/h3&gt;
+        &lt;h4&gt;For a living planet&lt;/h4&gt;
+    &lt;/hgroup&gt;</pre>
+    <a href="http://www.html5cn.org/" style="background-color: antiquewhite;">更多资讯</a>
+</div>
+</body>
+</html>

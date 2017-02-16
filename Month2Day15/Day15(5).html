@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        .box>p>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+            font-size: 13px;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">HTML5——表单域+交互标记</h1>
+    <a>表单域</a>
+    <p><b>&lt;datalist&gt;</b>：用于描述文档或文档某个部分的细节。<b>目前只有 Chrome 和 Safari 6 支持&lt;datalist&gt;标签。</b>
+        <a href="http://www.w3school.com.cn/tags/tag_details.asp" target="_blank">具体&lt;datalist&gt;</a></p>
+    <pre>   &lt;details&gt;
+         &lt;summary&gt;Copyright 2011.&lt;/summary&gt;
+         &lt;p&gt;All pages and graphics on this web site are the property of W3School.&lt;/p&gt;
+    &lt;/details&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_details" target="_blank">查看结果</a></p>
+
+
+
+    <p><b>&lt;keygen&gt;</b>：规定用于表单的密钥对生成器字段。当提交表单时，私钥存储在本地，公钥发送到服务器。
+        <a href="http://www.w3school.com.cn/tags/tag_keygen.asp" target="_blank">具体&lt;keygen&gt;</a></p>
+    <pre>   &lt;form action="demo_keygen.asp" method="get"&gt;
+            Username: &lt;input type="text" name="usr_name" /&gt;
+            Encryption: &lt;keygen name="security" /&gt;
+            &lt;input type="submit" /&gt;
+    &lt;/form&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_keygen" target="_blank">查看结果</a></p>
+
+
+    <p><b>&lt;output&gt;</b>：是 HTML 5 中的新标签，标签定义不同类型的输出，比如脚本的输出。
+        <a href="http://www.w3school.com.cn/tags/tag_output.asp" target="_blank">具体&lt;output&gt;</a>
+    </p>
+    <pre>   &lt;form oninput="x.value=parseInt(a.value)+parseInt(b.value)"&gt;0
+        &lt;input type="range" id="a" value="50"&gt;100
+        +&lt;input type="number" id="b" value="50"&gt;
+        =&lt;output name="x" for="a b"&gt;&lt;/output&gt;
+    &lt;/form&gt; </pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_output" target="_blank">查看结果</a></p>
+
+
+    <p><b>&lt;meter&gt;</b>：是 HTML 5 中的新标签。标签定义已知范围或分数值内的标量测量。也被称为 gauge（尺度）。例子：磁盘用量、查询结果的相关性，等等。
+        <b>注释：&lt;meter&gt; 标签不应用于指示进度（在进度条中）。如果标记进度条，请使用 &lt;progress&gt;标签。。</b>
+        <a href="http://www.w3school.com.cn/tags/tag_meter.asp">具体&lt;meter&gt;</a>
+    </p>
+    <pre>
+        &lt;meter value="3" min="0" max="10"&gt;十分之三&lt;/meter&gt;
+        &lt;meter value="0.6"&gt;60%&lt;/meter&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_meter" target="_blank">查看结果</a></p>
+
+    <p><b>&lt;progress&gt;</b>：是 HTML 5 中的新标签,标签标示任务的进度（进程）。
+        <a href="http://www.w3school.com.cn/tags/tag_progress.asp" target="_blank">具体&lt;progress&gt;</a>
+    </p>
+    <pre>//正在进行的下载：
+        &lt;progress value="22" max="100"&gt;&lt;/progress&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_progress" target="_blank">查看结果</a></p>
+
+    <a>交互标记</a>
+
+    <p><b>&lt;details&gt;</b>：是 HTML 5 中的新标签,标签标示任务的进度（进程）。
+        <a href="http://www.w3school.com.cn/tags/tag_progress.asp" target="_blank">具体&lt;details&gt;</a>
+    </p>
+    <pre>//正在进行的下载：
+        &lt;progress value="22" max="100"&gt;&lt;/progress&gt;</pre>
+    <p><a href="http://www.w3school.com.cn/tiy/t.asp?f=html5_progress" target="_blank">查看结果</a></p>
+</div>
+</body>
+</html>

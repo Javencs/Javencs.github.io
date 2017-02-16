@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">HTML5——章节格式</h1>
+    <a>章节格式</a>
+    <p><b>&lt;data&gt;</b>：嵌入自定义数据(存储的（自定义）数据能够被页面的 JavaScript 中利用，以创建更好的用户体验,不进行 Ajax 调用或服务器端数据库查询)。但如果内容是与time和date相关的，一定要使用&lt;time&gt;</p>
+    <pre>&lt;ul&gt;
+        &lt;li data-animal-type="bird"&gt;Salmon&lt;/li&gt;
+        &lt;li data-animal-type="fish"&gt;Owl&lt;/li&gt;
+        &lt;li data-animal-type="spider"&gt;Tarantula&lt;/li&gt;
+    &lt;/ul&gt;</pre>
+    <p><b>&lt;time&gt;</b>：代表日期和时间值；机器可读的等价形式通过datetime属性指定,&lt;time&gt;标签不会在任何浏览器中呈现任何特殊效果。</p>
+    <pre>&lt;time datetime="2008-02-14" pubdate="pubdate"&gt;2008-02-14&lt;/time&gt;</pre>
+    <p><b>&lt;mark&gt;</b>：代表一段需要被高亮(背景色)的引用文字，用来表示上下文的关联性</p>
+    <pre>&lt;p&gt;Do not forget to buy &lt;mark&gt;milk&lt;/mark&gt; today.&lt;/p&gt;</pre>
+    <p><b>&lt;ruby&gt;</b>：表示被ruby注释标记的文本，如中文汉字和它的拼音，支持 "ruby" 元素的浏览器不会显示 "rp" 元素的内容。</p>
+    <pre>&lt;ruby&gt;
+        漢 &lt;rt&gt;
+            &lt;rp&gt;(&lt;/rp&gt;
+            ㄏㄢˋ
+            &lt;rp&gt;)&lt;/rp&gt;
+        &lt;/rt&gt;
+    &lt;/ruby&gt;</pre>
+    <p><b>&lt;rt&gt;</b>：代表ruby注释，如中文拼音,具体见上</p>
+    <p><b>&lt;rp&gt;</b>：定义当浏览器不支持 "ruby" 元素时显示的内容,具体见上</p>
+    <p><b>&lt;bdi&gt;</b>：代表需要脱离父元素文本方向的一段文本。它允许嵌入一段不同或未知文本方向格式的文本</p>
+    <pre>   &lt;ul&gt;
+        &lt;li&gt;Username &lt;bdi&gt;Bill&lt;/bdi&gt;:80 points&lt;/li&gt;
+        &lt;li&gt;Username &lt;bdi&gt;Steve&lt;/bdi&gt;: 78 points&lt;/li&gt;
+    &lt;/ul&gt;</pre>
+    <p><b>&lt;wbr&gt;</b>：代表建议换行，建议浏览器在这个标记处可以断行,只是建议而不是必定会在此处断行,还要根据整行文字长度而定。</p>
+    <pre>&lt;p&gt;如果想学习 AJAX，那么您必须熟悉 XML&lt;wbr&gt;Http&lt;/wbr&gt;Request 对象。&lt;/p&gt;</pre>
+    <a href="http://www.html5cn.org/" style="background-color: antiquewhite;">更多资讯</a>
+
+
+</div>
+</body>
+</html>

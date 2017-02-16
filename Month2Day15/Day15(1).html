@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 900px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 50px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            text-indent: 1em;
+            width: 100%;
+            margin: 10px 0;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        .box>p>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">HTML5</h1>
+    <a>HTML5 简介</a>
+    <p>万维网的核心语言、标准通用标记语言下的一个应用超文本标记语言（HTML）的第五次重大修改（这是一项推荐标准、外语原文：W3C Recommendation）。
+    2014年10月29日，万维网联盟宣布，经过接近8年的艰苦努力，该标准规范终于制定完成。</p>
+    <a>HTML5新特性</a>
+    <p><span>语义特性:</span>HTML5赋予网页更好的意义和结构。更加丰富的标签将随着对RDFa的，微数据与微格式等方面的支持，构建对程序、对用户都更有价值的数据驱动的Web。<br/>
+        <span>连通性：</span>能够让你和服务器之间通过创新的新技术方法进行通信<br/>
+        <span>离线存储：</span>能够让网页在客户端本地存储数据以及更高效地离线运行<br/>
+        <span>多媒体：</span>使 video 和 audio 播放音视频<br/>
+        <span>绘图/动画效果：</span>提供了一个更加分化范围的呈现选择<br/>
+        <span>性能集成：</span>提供了非常显著的性能优化和更有效的计算机硬件使用<br/>
+        <span>设备访问：</span>能够处理各种输入和输出设备<br/>
+        <span>兼容性：</span>百度CND：http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js
+    </p>
+    <a href="http://baike.baidu.com/link?url=IptQhlfhhHnfCq2bih2WoZu1yCpB7bD7r-8ljqg2gWv_Z2yVIpkAei6mvlew66R5rOGtlFFPmvOeuiORKe_yY_" style="background-color: antiquewhite;cursor: pointer;width: 130px;">更多html5信息</a>
+    <a href="http://www.html5cn.org/" style="background-color: antiquewhite;cursor: pointer;width: 130px">更多资讯</a>
+
+    <a>自定义元素</a>
+    <p>在如 span、div 的标签内添加属性，让机器（如搜索引擎）识别其意义，一些特定类型的信息，例如评论、人物信息或事件都有相应的属性，用来描述其意义.<br/>
+        可以将“HTML5中所有元素的集合”看做一个词汇表，这个词汇表包括了可以代表章节或者文章的元素，但是不包括可以代表一个人或者活动的元素，如果要想表示一个“人”，那么就需要定义自己的词汇表，使用微数据就可以定义这样的词汇表.
+    </p>
+    <span>传统写法：</span>
+    <pre>   &lt;div&gt;
+            &lt;span&gt;2015年12月9日10:22&lt;/span&gt;
+            &lt;span&gt;评论内容&lt;/span&gt;
+    &lt;/div&gt;
+    </pre>
+    <span>新写法：</span>
+    <pre>   &lt;div itemscope itemtype="http://data-vocabulary.org/Review"&gt;
+            &lt;span itemprop="reviewer"&gt;Hungking&lt;/span&gt;
+            &lt;span itemprop="description"&gt;评论内容&lt;/span&gt;
+    &lt;/div&gt;
+    </pre>
+    <p><span>使用:</span>在一项微数据的最外层 div ，需要用 itemscop 标识，并用 itemtype 指定微数据类型，itemtype 的值是一个 url ，用于引入一个微数据词汇表（即各种微数据的类型定义）.</p>
+    <p><span>作用:</span>让机器识别网页内容 <a href="http://blog.csdn.net/jackyrongvip/article/details/9218459">详见：MicroDate</a></p>
+
+    <a>已被遗弃的元素</a>
+    <p>&lt;acronym&gt;、&lt;applet&gt;、&lt;basefont&gt;、&lt;big&gt;、&lt;center&gt;、&lt;dir&gt;、&lt;font&gt;、&lt;frame&gt;、&lt;frameset&gt;、&lt;noframes&gt;、&lt;strike&gt;、&lt;tt&gt;</p>
+
+
+</div>
+</body>
+</html>

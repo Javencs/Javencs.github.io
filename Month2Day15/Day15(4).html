@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        .box>p>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">HTML5——媒体标记</h1>
+    <a>媒体标记</a>
+    <!--HTML4:<object type="video/ogg" data="movie.ogv"><param name="src" value="movie.ogv"></object>-->
+    <p><b>&lt;video&gt;</b>：标签定义视频，比如电影片段或其他视频流。<a href="http://www.w3school.com.cn/tags/tag_video.asp">具体&lt;video&gt;</a></p>
+    <pre>&lt;video  src="movie.ogg" controls="controls"&gt;
+            您的浏览器不支持 video 标签。
+    &lt;/video&gt;</pre>
+    <p><b>&lt;audio&gt;</b>：标签定义声音，比如音乐或其他音频流。<a href="http://www.w3school.com.cn/tags/tag_audio.asp">具体&lt;audio&gt;</a></p>
+    <pre>&lt;audio src="someaudio.wav"&gt;
+        您的浏览器不支持 audio 标签。
+    &lt;/audio&gt;</pre>
+
+
+    <p><b>&lt;source&gt;</b>：标签允许您规定可替换的视频/音频文件供浏览器根据它对媒体类型或者编解码器的支持进行选择。
+        <a href="http://www.w3school.com.cn/tags/tag_source.asp">具体&lt;source&gt;</a>
+    </p>
+    <pre>&lt;audio controls&gt;
+        &lt;source src="horse.ogg" type="audio/ogg"e&gt;
+        &lt;source src="horse.mp3" type="audio/mpeg"e&gt;
+        Your browser does not support the audio element.
+    &lt;/audio&gt;</pre>
+    <p><b>&lt;track&gt;</b>：标签为诸如 video 元素之类的媒介规定外部文本轨道。用于规定字幕文件或其他包含文本的文件，当媒介播放时，这些文件是可见的.
+        <b>目前所有主流浏览器都不支持 &lt;track&gt; 标签。</b>
+        <a href="http://www.w3school.com.cn/tags/tag_track.asp">具体&lt;track&gt;</a>
+    </p>
+
+    <p><b>&lt;embed&gt;</b>：标签是 HTML 5 中的新标签,定义嵌入的内容，比如插件。
+        <a href="http://www.w3school.com.cn/tags/tag_embed.asp">具体&lt;embed&gt;</a>
+    </p>
+    <pre>&lt;embed src="helloworld.swf" /&gt</pre>
+
+    <p><b>&lt;canvas&gt;</b>：是 HTML 5 中的新标签,&lt;canvas&gt;元素本身并没有绘制能力（它仅仅是图形的容器） - 您必须使用脚本来完成实际的绘图任务。
+        <a href="http://www.w3school.com.cn/tags/html_ref_canvas.asp">具体&lt;canvas&gt;</a>
+        <a href="../Month1Day13/Month1Day13canves.html">&lt;canvas&gt;回顾</a>
+    </p>
+
+    <p><b>&lt;svg&gt;</b>：SVG 意为可缩放矢量图形（Scalable Vector Graphics）,是使用 XML 来描述二维图形和绘图程序的语言。
+        <a href="http://www.w3school.com.cn/svg/svg_reference.asp">具体&lt;svg&gt;</a>
+    </p>
+    <pre>   &lt;?xml version="1.0" standalone="no"?&gt;
+
+    &lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN""http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
+
+    &lt;svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+
+        &lt;circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red"/&gt;
+
+    &lt;/svg&gt;</pre>
+    <p><b>代码解释：</b>第一行包含了 XML 声明。请注意 standalone 属性！该属性规定此 SVG 文件是否是“独立的”，或含有对外部文件的引用。<br/>
+        standalone="no" 意味着 SVG 文档会引用一个外部文件 - 在这里，是 DTD 文件。<br/>
+        第二和第三行引用了这个外部的 SVG DTD。该 DTD 位于 “http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd”。该 DTD 位于 W3C，含有所有允许的 SVG 元素。<br/>
+        SVG 代码以&lt;svg&gt;元素开始，包括开启标签&lt;svg&gt;和关闭标签&lt;/svg&gt;。这是根元素。width 和 height 属性可设置此 SVG 文档的宽度和高度。version 属性可定义所使用的 SVG 版本，xmlns 属性可定义 SVG 命名空间。<br/>
+        SVG 的&lt;circle&gt;用来创建一个圆。cx 和 cy 属性定义圆中心的 x 和 y 坐标。如果忽略这两个属性，那么圆点会被设置为 (0, 0)。r 属性定义圆的半径。<br/>stroke 和 stroke-width 属性控制如何显示形状的轮廓。我们把圆的轮廓设置为 2px 宽，黑边框。<br/>
+        fill 属性设置形状内的颜色。我们把填充颜色设置为红色。<br/>
+        关闭标签的作用是关闭 SVG 元素和文档本身。</p>
+
+    <p><b>&lt;math&gt;</b>：用于在当前行中包括数学表达式。HTML数学功能强大，足以描述您可以在常用字处理包中创建的数学表达式范围，以及适合于呈现到语音。
+        <a href="http://www.w3school.com.cn/svg/svg_reference.asp">具体&lt;math&gt;</a>
+    </p>
+    <a href="http://www.html5cn.org/" style="background-color: antiquewhite;">更多资讯</a>
+</div>
+</body>
+</html>
