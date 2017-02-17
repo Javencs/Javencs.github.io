@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>基于浏览器的HTML5查找地理位置</title>
+    <script src="http://api.map.baidu.com/api?v=1.2" type="text/javascript"></script>
+    <style>
+        .bt1{
+            position: absolute;
+            top: 20px;
+            left: calc((100% - 900px) / 2);
+        }
+        #demo{
+            position: absolute;
+            top: 50px;
+            left: calc((100% - 1000px) / 2);
+        }
+        #container{
+            position: absolute;
+            width: 730px;
+            height: 570px;
+            top: 50px;
+            left: calc((100% - 730px) / 2);
+            border: 1px solid gray;
+            overflow:hidden;
+        }
+    </style>
+</head>
+<body>
+<button class="bt1" onclick="getLocation()"> 开始定位 </button>
+<p id="demo">这里将显示经纬度</p>
+<div id="container">
+</div>
+<script>
+    var x=document.getElementById("demo");
+    var map =new BMap.Map("container");  //访问百度地图
+    map.centerAndZoom("杭州",12);    //地图初始化
+    map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+    map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+    map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+    map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+    map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));   //右下角，打开
+
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        }else{
+            x.innerHTML="该浏览器不支持获取地理位置。";console.log('浏览器不支持定位！');
+        }
+    }
+    function showPosition(position)
+    {
+        var longitude =position.coords.longitude;   //经度
+        var latitude = position.coords.latitude;    //纬度
+        var point =new BMap.Point(longitude,latitude);   //创建地理位置坐标
+        map.centerAndZoom(point,17);
+
+        x.innerHTML="经度: " + longitude + "<br>纬度: " + latitude;
+        var marker = new BMap.Marker(point); //创建定位标记
+        map.addOverlay(marker);  //添加定位标记
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    }
+    function showError(error)
+    {
+        console.log('定位出错！');
+        switch(error.code)
+        {
+            case error.PERMISSION_DENIED:
+                x.innerHTML="用户拒绝对获取地理位置的请求。";
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML="位置信息是不可用的。";
+                break;
+            case error.TIMEOUT:
+                x.innerHTML="请求用户地理位置超时。";
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML="未知错误。";
+                break;
+        }
+    }
+</script>
+</body>
+</html>

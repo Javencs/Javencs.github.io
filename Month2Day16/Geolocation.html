@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        .box>p>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">HTML5——Geolocation</h1>
+    <a>Geolocation</a>
+    <p>HTML5 Geolocation（地理定位）用于定位用户的位置。</p>
+    <a>获取用户地理位置</a>
+    <p>用 getCurrentPosition() 方法来获得用户的位置。</p>
+    <pre>
+        var x=document.getElementById("demo");
+        function getLocation()
+        {
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else{
+                x.innerHTML="该浏览器不支持获取地理位置。";
+            }
+        }
+        function showPosition(position)
+        {
+            x.innerHTML="纬度: " + position.coords.latitude +
+            "&lt;br&gt;经度: " + position.coords.longitude;
+        }
+    </pre>
+    <a>处理错误和拒绝</a>
+    <pre>
+        function showError(error)
+        {
+            switch(error.code)
+            {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML="用户拒绝对获取地理位置的请求。"
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML="位置信息是不可用的。"
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML="请求用户地理位置超时。"
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML="未知错误。"
+                    break;
+            }
+        }
+    </pre>
+    <a>在地图中显示结果</a>
+    <p>如需在地图中显示结果，需要访问可使用经纬度的地图服务，比如谷歌地图或百度地图,(本次使用百度地图)</p>
+    <pre>
+        function showPosition(position)
+        {
+            var longitude =position.coords.longitude;   //经度
+            var latitude = position.coords.latitude;    //纬度
+            var point =new BMap.Point(longitude,latitude);   //创建地理位置坐标
+            var map =new BMap.Map("container");  //访问百度地图
+            map.centerAndZoom(point,17);   //(坐标,地图级别)
+
+            //启用滚轮放大缩小，默认禁用
+            map.enableScrollWheelZoom();
+            //启用地图惯性拖拽，默认禁用
+            map.enableContinuousZoom();
+            //添加默认缩放平移控件
+            map.addControl(new BMap.NavigationControl());
+            //添加默认缩略地图控件
+            map.addControl(new BMap.OverviewMapControl());
+            //右下角小地图
+            map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));
+            //创建定位标记
+            var marker = new BMap.Marker(point);
+            //添加定位标记
+            map.addOverlay(marker);
+            //标记跳动的动画
+            marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+        }
+    </pre>
+    <p><b>地图级别：</b>谷歌电子地图:最低1级,最高是是22级。百度电子地图:最低3级,最高20级。</p>
+    <a>完整程序</a>
+    <pre>
+        &lt;body&gt;
+        &lt;button class="bt1" onclick="getLocation()"&gt; 开始定位 &lt;/button&gt;
+        &lt;p id="demo"&gt;这里将显示经纬度&lt;/p&gt;
+        &lt;div id="container"&gt;&lt;/div&gt;
+        &lt;script&gt;
+            var x=document.getElementById("demo");
+            var map =new BMap.Map("container");  //访问百度地图
+            map.centerAndZoom("杭州",12);    //地图初始化
+            map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+            map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+            map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+            map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+            map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));   //右下角，打开
+
+            function getLocation()
+            {
+                if (navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(showPosition,showError);
+                }else{
+                    x.innerHTML="该浏览器不支持获取地理位置。";console.log('浏览器不支持定位！');
+                }
+            }
+            function showPosition(position)
+            {
+                var longitude =position.coords.longitude;   //经度
+                var latitude = position.coords.latitude;    //纬度
+                var point =new BMap.Point(longitude,latitude);   //创建地理位置坐标
+                map.centerAndZoom(point,17);
+
+                x.innerHTML="经度: " + longitude + "&lt;br&gt;纬度: " + latitude;
+                var marker = new BMap.Marker(point); //创建定位标记
+                map.addOverlay(marker);  //添加定位标记
+                marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+            }
+            function showError(error)
+            {
+                console.log('定位出错！');
+                switch(error.code)
+                {
+                    case error.PERMISSION_DENIED:
+                        x.innerHTML="用户拒绝对获取地理位置的请求。";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        x.innerHTML="位置信息是不可用的。";
+                        break;
+                    case error.TIMEOUT:
+                        x.innerHTML="请求用户地理位置超时。";
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        x.innerHTML="未知错误。";
+                        break;
+                }
+            }
+        &lt;/script&gt;
+        &lt;/body&gt;
+    </pre>
+    <p><a href="map2.html" target="_blank">查看结果</a>（由于浏览器原因，可能无法实现功能，可以更换浏览器）</p>
+    <a href="http://justcoding.iteye.com/blog/2210367" style="background-color: antiquewhite;target:'_blank';cursor: pointer">更多Geolocation</a>
+
+
+</div>
+</body>
+</html>
