@@ -55,6 +55,7 @@
         var longitude =position.coords.longitude;   //经度
         var latitude = position.coords.latitude;    //纬度
         var point =new BMap.Point(longitude,latitude);   //创建地理位置坐标
+        //BMap.Convertor.translate(point, 0, initMap); //转换坐标
         map.centerAndZoom(point,17);
 
         x.innerHTML="经度: " + longitude + "<br>纬度: " + latitude;
@@ -81,6 +82,7 @@
                 break;
         }
     }
+
 </script>
 </body>
 </html>

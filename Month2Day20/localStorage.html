@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5——localStorage</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        .box>p>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">HTML5——localStorage</h1>
+    <a>1.什么是localStorage？</a>
+    <p>在HTML5中，新加入了一个localStorage特性，这个特性主要是用来作为本地存储来使用的，解决了cookie存储空间不足的问题(cookie中每条cookie的存储空间大约为4k)，localStorage中一般浏览器支持的是5M大小，这个在不同的浏览器中localStorage会有所不同。<br/>
+        这里要特别说明一下localStorage的使用也是遵循同源策略的，所以不同的网站直接是不能共用相同的localStorage。</p>
+    <a>1.检测浏览器是否支持本地存储</a>
+    <pre>
+        var saveData = window.localStorage;
+        if(！saveData){
+            alert("浏览器不支持localstorage");
+            return false;
+        }else{
+            //主逻辑业务
+        }
+    </pre>
+    <a>2.localStorage的写入(3种方法)</a>
+    <pre>
+        var storage = window.localStorage;
+        if(！storage){
+            alert("浏览器支持localstorage");
+            return;   //结束运行
+        }
+        //写入a字段
+        storage["a"]=1;
+        //写入b字段
+        storage.b=1;
+        //写入c字段
+        storage.setItem("c",3);
+        console.log(typeof storage["a"]);
+        console.log(typeof storage["b"]);
+        console.log(typeof storage["c"]);
+    </pre>
+    <span>运行结果</span><br/>
+    <img src="imgs/2.png">
+    <img src="imgs/5.png">
+    <p>刚刚存储进去的是int类型，但是打印出来却是string类型，这个与localStorage本身的特点有关，localStorage只支持string类型的存储。</p>
+    <a>3.localStorage的读取</a>
+    <p>有三种对localStorage的读取，其中官方推荐的是getItem\setItem这两种方法对其进行存取。</p>
+    <pre>
+        if(!window.localStorage){
+            alert("浏览器支持localstorage");
+        }else{
+            var storage=window.localStorage;
+            //写入a字段
+            storage["a"]=1;
+            //写入b字段
+            storage.a=1;
+            //写入c字段
+            storage.setItem("c",3);
+            console.log(typeof storage["a"]);
+            console.log(typeof storage["b"]);
+            console.log(typeof storage["c"]);
+            //第一种方法读取
+            var a=storage.a;
+            console.log(a);
+            //第二种方法读取
+            var b=storage["b"];
+            console.log(b);
+            //第三种方法读取
+            var c=storage.getItem("c");
+            console.log(c);
+        }
+    </pre>
+    <a>4.localStorage的删除</a>
+    <span>将localStorage的所有内容清除</span><br/>
+    <pre>
+        var storage=window.localStorage;
+            storage.a=1;
+            storage.setItem("c",3);
+            console.log(storage);
+            storage.clear();
+            console.log(storage);
+    </pre>
+    <span>将localStorage中的某个键值对删除</span><br/>
+    <pre>
+        var storage=window.localStorage;
+            storage.a=1;
+            storage.setItem("c",3);
+            console.log(storage);
+            storage.removeItem("a");   //删除key = a 的键值对
+            console.log(storage.a);
+    </pre>
+    <a>5.localStorage的键获取</a>
+    <p>使用key()方法，向其中输入索引即可获取对应的键</p>
+    <pre>
+        var storage=window.localStorage;
+            storage.a=1;
+            storage.setItem("c",3);
+            for(var i=0;i&lt;storage.length;i++){
+                var key=storage.key(i);
+                console.log(key);
+            }
+    </pre>
+    <a>6.注意事项</a>
+    <p>一般我们会将JSON存入localStorage中，但是在localStorage会自动将localStorage转换成为字符串形式,这个时候我们可以使用JSON.stringify()这个方法，来将JSON转换成为JSON字符串</p>
+    <pre>
+        if(!window.localStorage){
+            alert("浏览器支持localstorage");
+        }else{
+            var storage=window.localStorage;
+            var data={
+                name:'xiecanyong',
+                sex:'man',
+                hobby:'program'
+            };
+            var d=JSON.stringify(data);  //把json转化为json字符串形式
+            storage.setItem("data",d);
+            console.log(storage.data);
+        }
+    </pre>
+    <p>读取之后要将JSON字符串转换成为JSON对象，使用JSON.parse()方法</p>
+    <pre>
+        var storage=window.localStorage;
+            var data={
+                name:'xiecanyong',
+                sex:'man',
+                hobby:'program'
+            };
+            var d=JSON.stringify(data);
+            storage.setItem("data",d);
+            //将JSON字符串转换成为JSON对象输出
+            var json=storage.getItem("data");
+            var jsonObj=JSON.parse(json);
+            console.log(typeof jsonObj);
+    </pre>
+    <p>打印出来是Object对象,另外还有一点要注意的是:其他类型读取出来也要进行转换</p>
+</div>
+</body>
+</html>

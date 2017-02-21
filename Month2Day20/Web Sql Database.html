@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5——本地数据库（Web Sql Database）</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        .box>p>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">HTML5——本地数据库（Web Sql Database）</h1>
+    <a>1.什么是Web SQL？</a>
+    <p>Web SQL数据库API实际上不是HTML5规范的组成部分，而是单独的规范。它通过一套API来操纵客户端的数据库。Safari、Chrome、Firefox、Opera等主流浏览器都已经支持Web SQL Database。</p>
+    <p>下面将一一将介绍怎样创建打开数据库，创建表，添加数据，更新数据，删除数据，删除表 。<br/>
+        先介绍三个核心方法<br/>
+        1、openDatabase：这个方法使用现有数据库或创建新数据库创建数据库对象。<br/>
+        2、transaction：这个方法允许我们根据情况控制事务提交或回滚。<br/>
+        3、executeSql：这个方法用于执行真实的SQL查询。
+    </p>
+    <a>1.openDatabase()打开连接并创建数据库</a>
+    <p>openDatabase方法打开一个已经存在的数据库，如果数据库不存在，它还可以创建数据库。几个参数意义分别是：<br/>
+        1，数据库名称。<br/>
+        2，版本号(可不写)<br/>
+        3，对数据库的描述。<br/>
+        4，设置数据的大小。<br/>
+        5，回调函数(可省略)。<br/>
+        初次调用时创建sqllite数据库(可以用SQLiteSpy打开文件，可以看到里面的数据)。</p>
+    <pre>
+    var dataBase = openDatabase("student", "1.0", "学生表", 1024 * 1024, function () { });
+    if (!dataBase) {
+        alert("数据库创建失败！");
+    } else {
+        alert("数据库创建成功！");
+    }
+    </pre>
+
+    <a>2.executeSql创建数据表</a>
+    <p>executeSql函数有四个参数，其意义分别是：<br/>
+        1）表示查询的字符串，使用的SQL语言是SQLite 3.6.19。（必选）<br/>
+        2）插入到查询中问号所在处的字符串数据。（可选）<br/>
+        3）成功时执行的回调函数。返回两个参数：tx和执行的结果。（可选）<br/>
+        4）一个失败时执行的回调函数。返回两个参数：tx和失败的错误信息。（可选）</p>
+    <pre>
+    this.createTable=function() {
+        dataBase.transaction( function(tx) {
+            tx.executeSql(
+                "create table if not exists stu (id REAL UNIQUE, name TEXT)",
+                [],
+                function(tx,result){ alert('创建stu表成功'); },
+                function(tx, error){ alert('创建stu表失败:' + error.message);}
+            });
+        });
+    }
+    </pre>
+    <a>3.执行增删改查</a>
+    <span>1)添加数据：</span>
+    <pre>
+    this.insert = function () {
+    dataBase.transaction(function (tx) {
+        tx.executeSql(
+                "insert into stu (id, name) values(?, ?)",
+                [id, '徐明祥'],
+                function () { alert('添加数据成功');},
+                function (tx, error) { alert('添加数据失败: ' + error.message);}
+            )
+        });
+    };
+    </pre>
+    <span>2)查询数据</span>
+    <pre>
+    this.query = function () {
+        dataBase.transaction(function (tx) {
+            tx.executeSql(
+                "select * from stu", [],
+                function (tx, result) { //执行成功的回调函数
+                //在这里对result 做你想要做的事情吧...........
+                },
+                function (tx, error) {
+                alert('查询失败: ' + error.message);}
+             );
+        });
+    }
+    </pre>
+    <span>3)更新数据</span>
+    <pre>
+    this.update = function (id, name) {
+        dataBase.transaction(function (tx) {
+            tx.executeSql(
+                "update stu set name = ? where id= ?",
+                [name, id],
+                function (tx, result){},
+                function (tx, error) {alert('更新失败: ' + error.message);}
+            );
+        });
+    }
+    </pre>
+    <span>4)删除数据</span>
+    <p>删除一个数据</p>
+    <pre>
+    this.del = function (id) {
+        dataBase.transaction(function (tx) {
+            tx.executeSql(
+                "delete from stu where id= ?",
+                [id],
+                function (tx, result) {},
+                function (tx, error) {alert('删除失败: ' + error.message);}
+            );
+        });
+    }
+    </pre>
+    <p>删除所有数据</p>
+    <pre>
+    this.del = function (id) {
+        dataBase.transaction(function (tx) {
+            tx.executeSql(
+                "delete from stu",
+                [id],
+                function (tx, result) {},
+                function (tx, error) {alert('删除失败: ' + error.message);}
+            );
+        });
+    }
+    </pre>
+    <span>5)删除数据表</span>
+    <pre>
+    this.dropTable = function () {
+        dataBase.transaction(function (tx) {
+            tx.executeSql('drop table stu');
+        });
+    }
+    </pre>
+</div>
+<script>
+
+</script>
+</body>
+</html>
