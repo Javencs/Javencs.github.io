@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>div{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        .box>div>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">CSS3——Selectors</h1>
+    <a>1.元素选择符 Element Selectors</a>
+    <div>
+        <a>*：</a>通配选择符,指向所有元素对象。<br/>
+        <a>E：</a>类型选择符,以文档语言对象类型作为选择符。<br/>
+        <a>E#myid：</a>id选择符,以唯一标识符id属性等于myid的E对象作为选择符。<br/>
+        <a>E.myclass：</a>class选择符,以class属性包含myclass的E对象作为选择符。<br/>
+    </div>
+    <a>2.关系选择符</a>
+    <div>
+        <a>E F：</a>包含选择符,选择所有被E元素包含的F元素。<br/>
+        <a>E>F：</a>子选择符,选择所有作为E元素的子元素F。<br/>
+        <a>E+F：</a>相邻选择符,选择紧贴在E元素之后F元素。<br/>
+        <a>E~F：</a>兄弟选择符,选择E元素所有兄弟元素F。<br/>
+    </div>
+    <a>3.属性选择符</a>
+    <div>
+        <a>E[att]：</a>选择具有att属性的E元素。<br/>
+        <a>E[att="val"]</a>选择具有att属性且属性值等于val的E元素。<br/>
+        <a>E[att~="val"]：</a>选择具有att属性且属性值为一用空格分隔的字词列表，其中一个等于val的E元素。<br/>
+        <a>E[att^="val"]：</a>选择具有att属性且属性值为以val开头的字符串的E元素。<br/>
+        <a>E[att$="val"]：</a>选择具有att属性且属性值为以val结尾的字符串的E元素。<br/>
+        <a>E[att*="val"]：</a>选择具有att属性且属性值为包含val的字符串的E元素。<br/>
+        <a>E[att|="val"]：</a>选择具有att属性且属性值为以val开头并用连接符"-"分隔的字符串的E元素，如果属性值仅为val，也将被选择。<br/>
+    </div>
+    <a>4.伪类选择符</a>
+    <div>
+        <a>E:link：</a>设置超链接a在未被访问前的样式。<br/>
+        <a>E:visited：</a>设置超链接a在其链接地址已被访问过时的样式。<br/>
+        <a>E:hover：</a>设置元素在其鼠标悬停时的样式。<br/>
+        <a>E:active：</a>设置元素在被用户激活（在鼠标点击与释放之间发生的事件）时的样式。<br/>
+        <a>E:focus：</a>设置元素在成为输入焦点（该元素的onfocus事件发生）时的样式。<br/>
+        <a>E:lang(fr)：</a>匹配使用特殊语言的E元素。<br/>
+        <a>E:not(s)：</a>匹配不含有s选择符的元素E。<br/>
+
+        <a>E:root：</a>匹配E元素在文档的根元素。<br/>
+        <span>body部分</span>
+        <pre>
+            &lt;div&gt;
+                &lt;p&gt;1111&lt;/p&gt;
+                &lt;p&gt;2222&lt;/p&gt;
+                &lt;p&gt;3333&lt;/p&gt;
+                &lt;p&gt;4444&lt;/p&gt;
+                &lt;p&gt;5555&lt;/p&gt;
+                &lt;p&gt;6666&lt;/p&gt;
+                &lt;span&gt;0000&lt;/span&gt;
+            &lt;/div></pre>
+        <a>E:first-child：</a>匹配父元素的第一个子元素E。<br/>
+        <pre>li:first-child{color: red}    //第一个li变红色</pre>
+
+        <a>E:last-child：</a>匹配父元素的最后一个子元素E。<br/>
+        <pre>li:last-child{color: red}    //最后一个li变红色</pre>
+
+        <a>E:only-child：</a>匹配父元素仅有一个子元素且那个子元素是E。<br/>
+
+        <a>E:nth-child(n)：</a>匹配父元素的第n个子元素E(n从1开始)。<br/>
+        <pre>li:nth-child(2){color: red}    //正数第二个li变红色</pre>
+
+        <a>E:nth-last-child(n)：</a>匹配父元素的倒数第n个子元素E(n从1开始)。<br/>
+        <pre>li:nth-last-child(2){color: red}   //倒数第二个li变红色</pre>
+
+        <a>E:first-of-type：</a>匹配同类型中的第一个同级兄弟元素E。<br/>
+        <pre>li:first-of-type{color: red}   //第一个li变红色</pre>
+
+        <a>E:last-of-type：</a>匹配同类型中的最后一个同级兄弟元素E。<br/>
+        <pre>li:last-of-type{color: red}   //最后一个li变红色</pre>
+
+        <a>E:only-of-type：</a>匹配同类型中的唯一的一个同级兄弟元素E。<br/>
+        <pre>span:only-of-type{color: red}   //span变红色</pre>
+
+        <a>E:nth-of-type(n)：</a>匹配同类型中的第n个同级兄弟元素E。<br/>
+        <pre>li:nth-of-type(2){color: red}   //正数第二个li变红色,n从1开始</pre>
+
+        <a>E:nth-last-of-type(n)：</a>匹配同类型中的倒数第n个同级兄弟元素E。<br/>
+        <pre>li:nth-last-of-type(2){color: red}   //倒数第二个li变红色,n从1开始</pre>
+
+        <a>E:empty：</a>匹配没有任何子元素（包括text节点）的元素E。<br/>
+        <pre>p:empty{height:30px;background-color: red}   //选中没有任何内容的p</pre>
+
+        <a>E:checked：</a>匹配用户界面上处于选中状态的元素E。(用于input type为radio与checkbox时)<br/>
+        <pre>input:checked{height:30px;background-color: red}</pre>
+
+        <a>E:enabled：</a>匹配用户界面上处于可用状态的元素E。<br/>
+        <span>body部分</span>
+        <pre>
+            &lt;input type="text" value="可用状态" /&gt;
+            &lt;input type="text" value="可用状态" /&gt;
+            &lt;input type="text" value="禁用状态" disabled="disabled" /&gt;
+            &lt;input type="text" value="禁用状态" disabled="disabled" /&gt;
+        </pre>
+        <pre>
+        input[type="text"]:enabled {
+            background: #fff;
+            color: #000;
+        }
+        input[type="text"]:disabled {
+            background: #eee;
+            color: #ccc;
+        }
+        </pre>
+        <a>E:disabled：</a>匹配用户界面上处于禁用状态的元素E。<br/>
+        <a>E:target：</a>匹配相关URL指向的E元素。<br/>
+        <span>body部分</span>
+        <pre>
+            &lt;a href="#div1"&gt;选中一&lt;/a&gt;
+            &lt;a href="#div2"&gt;选中二&lt;/a&gt;
+            &lt;a href="#div3"&gt;选中三&lt;/a&gt;
+            &lt;a href="#div4"&gt;选中四&lt;/a&gt;
+
+            &lt;div id="div1" class="divs"&gt;&lt;/div&gt;
+            &lt;div id="div2" class="divs"&gt;&lt;/div&gt;
+            &lt;div id="div3" class="divs"&gt;&lt;/div&gt;
+            &lt;div id="div4" class="divs"&gt;&lt;/div&gt;
+        </pre>
+        <span>选择器</span>
+        <pre>
+        .divs{
+            width: 100px;
+            height: 100px;
+            background-color: azure;
+        }
+        .divs:target{
+            background-color: cornflowerblue;
+        }
+        </pre>
+        点击任意一个a，它对应的div背景色改变
+        <a>@page:first：</a>设置页面容器第一页使用的样式。仅用于@page规则<br/>
+        <a>@page:left：</a>设置页面容器位于装订线左边的所有页面使用的样式。仅用于@page规则<br/>
+        <a>@page:right：</a>设置页面容器位于装订线右边的所有页面使用的样式。仅用于@page规则<br/>
+    </div>
+
+</div>
+</body>
+</html>
