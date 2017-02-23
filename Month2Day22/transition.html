@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CSS3</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>div{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        .box>div>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        span{
+             font-size: 15px;
+             font-family: "微软雅黑";
+             width: auto;
+             line-height: 30px;
+             font-weight: bold;
+             background-color: antiquewhite;
+         }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">CSS3——transition</h1>
+    <a>1、transition：复合属性。检索或设置对象变换时的过渡。</a>
+    <p>注意：如果只提供一个&lt;time&gt;参数，则为 &lt;transition-duration&gt; 的值定义；如果提供二个&lt;time&gt;参数，则第一个为 &lt;transition-duration&gt; 的值定义，第二个为 &lt;transition-delay&gt; 的值定义</p>
+    <div>
+        <a>取值：</a><br/>
+        &lt;transition-property&gt;：检索或设置对象中的参与过渡的属性<br/>
+        &lt;transition-duration&gt;：检索或设置对象过渡的持续时间<br/>
+        &lt;transition-timing-function&gt;：检索或设置对象中过渡的动画类型<br/>
+        &lt;transition-delay&gt;：检索或设置对象延迟过渡的时间
+    </div>
+    <p>缩写方式：</p>
+    <pre>
+        transition:
+		border-color .5s ease-in .1s,
+		background-color .5s ease-in .1s,
+		color .5s ease-in .1s;
+    </pre>
+    <p>拆分方式：</p>
+    <pre>
+        transition-property: border-color, background-color, color;
+        transition-duration: .5s, .5s, .5s;
+        transition-timing-function: ease-in, ease-in, ease-in;
+        transition-delay: .1s, .1s, .1s;
+    </pre>
+    <p>如果需要定义多个过渡属性且不想指定具体是哪些属性过渡，同时其他属性只有一个参数值，据此可以对上面的例子进行缩写：</p>
+    <pre>transition: all .5s ease-in .1s;</pre>
+    <a>2、transition-property：检索或设置对象中的参与过渡的属性。</a>
+    <p>默认值为：all。默认为所有可以进行过渡的css属性。如果提供多个属性值，以逗号进行分隔。</p>
+    <div>
+        <a>取值：</a><br/>
+        none：不指定过渡的css属性<br/>
+        all：所有可以进行过渡的css属性<br/>
+        &lt;IDENT&gt;：指定要进行过渡的css属性
+    </div>
+    <a>3、transition-duration：检索或设置对象过渡的持续时间。</a>
+    <p> 如果提供多个属性值，以逗号进行分隔。</p>
+    <div>
+        <a>取值：</a>&lt;time&gt;：指定对象过渡的持续时间
+    </div>
+    <a>4、transition-timing-function：检索或设置对象中过渡的动画类型。。</a>
+    <p> 如果提供多个属性值，以逗号进行分隔。</p>
+    <div>
+        <a>取值：</a><br/>
+        linear：线性过渡。等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0)<br/>
+        ease：平滑过渡。等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0)<br/>
+        ease-in：由慢到快。等同于贝塞尔曲线(0.42, 0, 1.0, 1.0)<br/>
+        ease-out：由快到慢。等同于贝塞尔曲线(0, 0, 0.58, 1.0)<br/>
+        ease-in-out：由慢到快再到慢。等同于贝塞尔曲线(0.42, 0, 0.58, 1.0)<br/>
+        step-start：等同于 steps(1, start)<br/>
+        step-end：等同于 steps(1, end)<br/>
+        steps(&lt;integer&gt;[, [ start | end ] ]?)：接受两个参数的步进函数。第一个参数必须为正整数，指定函数的步数。第二个参数取值可以是start或end，指定每一步的值发生变化的时间点。第二个参数是可选的，默认值为end。<br/>
+        cubic-bezier(&lt;number&gt;, &lt;number&gt;, &lt;number&gt;, &lt;number&gt;)：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内
+    </div>
+    <a>5、transition-delay：检索或设置对象延迟过渡的时间。</a>
+    <p> 如果提供多个属性值，以逗号进行分隔。</p>
+    <div>
+        <a>取值：</a>&lt;time&gt;：指定对象过渡的延迟时间(单位 s)
+    </div>
+
+
+
+
+</div>
+</body>
+</html>

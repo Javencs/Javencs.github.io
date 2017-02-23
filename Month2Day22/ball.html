@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>球面</title>
+    <style>
+        *{background-color: #333}
+        #box{
+            position: absolute;
+            top: 260px;
+            left: 500px;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(225,221,187,.2);
+            transform-style: preserve-3d;
+            transform: rotateX(90deg);
+            animation: rotate 15s infinite;
+        }
+        .allbox{
+            position: absolute;
+            background-color: rgba(225,221,187,.2);
+            top: 0;
+            left: 0;
+            width: 35px;
+            height: 35px;
+            transform-style: preserve-3d;
+        }
+        .test{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 35px;
+            height: 35px;
+            color: #fff;
+            background-color: rgba(255,255,255,.5);
+            font-size: 15px;
+            transform-origin: 50% 50%;
+            /*backface-visibility: hidden;*/
+            line-height: 70px;
+            text-align: center;
+        }
+        #boxtwos{  transform:rotateZ(15deg)  }
+        #boxtwo{  transform:rotateZ(90deg)  }
+        #boxthrees{  transform:rotateZ(45deg)  }
+        #boxthree{  transform:rotateZ(30deg)  }
+        #boxfours{  transform:rotateZ(75deg)  }
+        #boxfour{  transform:rotateZ(60deg)  }
+        #boxfives{  transform:rotateZ(105deg)  }
+        #boxfive{  transform:rotateZ(120deg)  }
+        #boxsixs{  transform:rotateZ(135deg)  }
+        #boxsix{  transform:rotateZ(150deg)  }
+        #boxseven{  transform:rotateZ(165deg)  }
+
+        .one{transform:translateZ(-210px);}
+        .two{  transform:rotateY(20deg) translateZ(-210px);   }
+        .three{  transform:rotateY(40deg) translateZ(-210px); }
+        .four{  transform:rotateY(60deg) translateZ(-210px);}
+        .five{  transform:rotateY(80deg) translateZ(-210px);  }
+        .six{  transform:rotateY(100deg) translateZ(-210px); }
+        .seven{  transform:rotateY(120deg) translateZ(-210px); }
+        .eight{  transform:rotateY(140deg) translateZ(-210px); }
+        .nine{  transform:rotateY(160deg) translateZ(-210px); }
+        .ten{  transform:rotateY(180deg) translateZ(-210px); }
+        .eleven{  transform:rotateY(200deg) translateZ(-210px); }
+        .twelve{  transform:rotateY(220deg) translateZ(-210px); }
+        .thirteen{transform:rotateY(240deg) translateZ(-210px);}
+        .fourteen{transform:rotateY(260deg) translateZ(-210px);}
+        .fifteen{transform:rotateY(280deg) translateZ(-210px);}
+        .sixteen{transform:rotateY(300deg) translateZ(-210px);}
+        .seventeen{transform:rotateY(320deg) translateZ(-210px);}
+        .eighteen{transform:rotateY(340deg) translateZ(-210px);}
+
+        @keyframes rotate {
+            from {
+                transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+            }
+            to {
+                transform: rotateY(360deg) rotateX(50deg) rotateZ(120deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="allbox" id="boxone">
+        <div class="test one"></div>
+        <div class="test ten"></div>
+    </div>
+    <div id="boxtwos" class="allbox"></div>
+    <div id="boxtwo" class="allbox"></div>
+    <div id="boxthrees" class="allbox"></div>
+    <div id="boxthree" class="allbox"></div>
+    <div id="boxfours" class="allbox"></div>
+    <div id="boxfour" class="allbox"></div>
+    <div id="boxfives" class="allbox"></div>
+    <div id="boxfive" class="allbox"></div>
+    <div id="boxsixs" class="allbox"></div>
+    <div id="boxsix" class="allbox"></div>
+    <div id="boxseven" class="allbox"></div>
+
+
+</div>
+
+<script>
+    var boxseven = document.getElementById('boxseven');
+    var boxsix = document.getElementById('boxsix');
+    var boxsixs = document.getElementById('boxsixs');
+    var boxfive = document.getElementById('boxfive');
+    var boxfives = document.getElementById('boxfives');
+    var boxfour = document.getElementById('boxfour');
+    var boxfours = document.getElementById('boxfours');
+    var boxthree = document.getElementById('boxthree');
+    var boxthrees = document.getElementById('boxthrees');
+    var boxtwo = document.getElementById('boxtwo');
+    var boxtwos = document.getElementById('boxtwos');
+    var boxone = document.getElementById('boxone');
+
+    var cls = ['test two','test three','test four','test five','test six','test seven','test eight','test nine','test eleven','test twelve','test thirteen','test fourteen','test fifteen','test sixteen','test seventeen','test eighteen'];
+
+    function add(obj){
+        for(var i = 0;i<16;i++){
+            var div = document.createElement("div");
+            div.className = cls[i];
+            obj.appendChild(div);
+        }
+    }
+    add(boxone);
+    add(boxseven);
+    add(boxsix);
+    add(boxsixs);
+    add(boxfives);
+    add(boxfour);
+    add(boxfours);
+    add(boxthree);
+    add(boxthrees);
+    add(boxtwo);
+    add(boxtwos);
+    add(boxfive);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>周测2</title>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">周测2</h1>
+    <a>1.HTTP状态码有哪些？分别代表什么意思？</a>
+    <p style="color:red;">
+        200 OK<br/>
+        2XX 请求成功<br/>
+        3XX 网页陈定向<br/>
+        404 页面不存在（not found）<br/>
+        4XX 请求错误<br/>
+        500 服务器遇到问题<br/>
+        505 服务器不支持，或者拒绝支持在请求中使用的 HTTP 版本。<br/>
+        5XX 服务器错误<br/>
+        6XX 服务器错误</p>
+
+    <a>2.请写一个简单的HTML5布局</a>
+    <pre>
+        &lt;header style="width: 900px;height: 100px;"&gt;
+            &lt;p&gt;This is logo&lt;/p&gt;
+        &lt;/header&gt;
+        &lt;nav&gt;导航栏&lt;/nav&gt;
+        &lt;section style="width: 900px;height: 400px;"&gt;文章部分&lt;/section&gt;
+        &lt;footer style="width: 900px;height: 100px"&gt;底部&lt;/footer&gt;
+        &lt;aside style="width: 80px;height: 200px;position: fixed;right: 20px;top: 200px;"&gt;侧边栏&lt;/aside&gt;
+    </pre>
+    <a>3.Ajax的核心和工作原理分别是什么？</a>
+    <p style="color:red;">Ajax的核心是XmlHttpRequest对象。<br/>Ajax的工作原理相当于在用户和服务器之间加了—个中间层，使用户操作与服务器响应异步化。这样把以前的一些服务器负担的工作转嫁到客户端，利于客户端闲置的处理能力来处理，减轻服务器和带宽的负担，从而达到节约ISP的空间及带宽租用成本的目的。</p>
+    <a>4.用jQuery实现hover时图片的放大效果</a>
+    <pre>
+        &lt;img src="example.png"&gt;
+        &lt;script&gt;
+            $(function(){
+                $('img').hover(function () {
+                    $('img').animate({width:"+100px",height:"+100px"},"slow");
+                })
+            })
+        &lt;/script&gt;
+    </pre>
+    <a>5.以下代码的$("div,span,p.myClass")结果是？</a>
+    <pre>
+        &lt;div&gt;div&lt;/div&gt;
+        &lt;p class="myClass"&gt;p class = "myClass"&lt;/p&gt;
+        &lt;span&gt;span&lt;/span&gt;
+        &lt;p class="notMyClass"&gt;p class = "notMyClass"&lt;/p&gt;
+    </pre>
+    <p>结果是：选中div标签，class为myClass的p标签，span标签</p>
+</div>
+
+</body>
+</html>

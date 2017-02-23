@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CSS3</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>div{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        .box>div>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        span{
+             font-size: 15px;
+             font-family: "微软雅黑";
+             width: auto;
+             line-height: 30px;
+             font-weight: bold;
+             background-color: antiquewhite;
+         }
+        pre{
+            font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+            display: block;
+            font-size: 15px;
+            height: auto;
+            width: 100%;
+            background-color:#f6f6f6;
+            line-height: 1.5em;
+            margin-bottom: 3px;
+            padding: 10px 0;
+        }
+        b{
+            background-color: antiquewhite;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">CSS3——transform</h1>
+    <a>1、2D Transform Functions：</a>
+    <div>
+        <a>translate()：</a>指定对象的2D translation（2D平移）。第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则默认值为0<br/>
+        <a>translatex()：</a>指定对象X轴（水平方向）的平移<br/>
+        <a>translatey()：</a>指定对象Y轴（垂直方向）的平移<br/>
+        <a>rotate()：</a>指定对象的2D rotation（2D旋转），需先有 <' transform-origin '> 属性的定义<br/>
+        <a>scale()：</a>指定对象的2D scale（2D缩放）。第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则默认取第一个参数的值<br/>
+        <a>scalex()：</a>指定对象X轴的（水平方向）缩放<br/>
+        <a>scaley()：</a>指定对象Y轴的（垂直方向）缩放<br/>
+        <a>skew()：</a>指定对象skew transformation（斜切扭曲）。第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则默认值为0<br/>
+        <a>skewx()：</a>指定对象X轴的（水平方向）扭曲<br/>
+        <a>skewy()：</a>指定对象Y轴的（垂直方向）扭曲<br/>
+    </div>
+    <a>2、3D Transform Functions：</a>
+    <div>
+        <a>translate3d()：</a>指定对象的3D位移。第1个参数对应X轴，第2个参数对应Y轴，第3个参数对应Z轴，参数不允许省略<br/>
+        <a>translatez()：</a>指定对象Z轴的平移<br/>
+        <a>rotate3d()：</a>指定对象的3D旋转角度，其中前3个参数分别表示旋转的方向x,y,z，第4个参数表示旋转的角度，参数不允许省略<br/>
+        <a>rotatex()：</a>指定对象在x轴上的旋转角度<br/>
+        <a>rotatey()：</a>指定对象在y轴上的旋转角度<br/>
+        <a>rotatez()：</a>指定对象在z轴上的旋转角度<br/>
+        <a>scale3d()：</a>指定对象的3D缩放。第1个参数对应X轴，第2个参数对应Y轴，第3个参数对应Z轴，参数不允许省略<br/>
+        <a>scalez()：</a>指定对象的z轴缩放<br/>
+        <a>perspective()：</a>指定透视距离<br/>
+    </div>
+    <a>3、transform-origin:设置或检索对象以某个原点进行转换。</a>
+    <p>该属性提供2个参数值。<br/>
+        如果提供两个，第一个用于横坐标，第二个用于纵坐标。<br/>
+        如果只提供一个，该值将用于横坐标；纵坐标将默认为50%。</p>
+    <div>
+        <a>取值：</a><br/>
+        &lt;percentage&gt;：用百分比指定坐标值。可以为负值。<br/>
+        &lt;length&gt;：用长度值指定坐标值。可以为负值。<br/>
+        left：指定原点的横坐标为left<br/>
+        center①：指定原点的横坐标为center<br/>
+        right：指定原点的横坐标为right<br/>
+        top：指定原点的纵坐标为top<br/>
+        center②：指定原点的纵坐标为center<br/>
+        bottom：指定原点的纵坐标为bottom
+    </div>
+    <a>4、transform-style:指定某元素的子元素是（看起来）位于三维空间内，还是在该元素所在的平面内被扁平化。</a>
+    <p>当该属性值为「preserve-3d」时，元素将会创建局部堆叠上下文。<br/>
+        决定一个变换元素看起来是处在三维空间还是平面内，需要该元素的父元素上定义 <' transform-style '> 属性。<br/>
+        对应的脚本特性为transformStyle。</p>
+    <div>
+        <a>取值：</a><br/>
+        flat：指定子元素位于此元素所在平面内<br/>
+        preserve-3d：指定子元素定位在三维空间内<br/>
+    </div>
+
+    <a>5、perspective:指定观察者与「z=0」平面的距离</a>
+    <p>指定观察者与「z=0」平面的距离，使具有三维位置变换的元素产生透视效果。「z>0」的三维元素比正常大，而「z<0」时则比正常小，大小程度由该属性的值决定。</p>
+    <div>
+        <a>取值：</a><br/>
+        none：不指定透视<br/>
+        &lt;length&gt;：指定观察者距离「z=0」平面的距离，为元素及其内容应用透视变换。不允许负值
+    </div>
+    <a>6、perspective-origin:指定透视点的位置。</a>
+    <p>该属性提供2个参数值。<br/>
+        如果提供两个，第一个用于横坐标，第二个用于纵坐标。<br/>
+        如果只提供一个，该值将用于横坐标；纵坐标将默认为center。</p>
+    <div>
+        <a>取值：</a><br/>
+        &lt;percentage&gt;：用百分比指定透视点坐标值，相对于元素宽度。可以为负值。<br/>
+        &lt;length&gt;：用长度值指定透视点坐标值。可以为负值。<br/>
+        left：指定透视点的横坐标为left<br/>
+        center①：指定透视点的横坐标为center<br/>
+        right：指定透视点的横坐标为right<br/>
+        top：指定透视点的纵坐标为top<br/>
+        center②：指定透视点的纵坐标为center<br/>
+        bottom：指定透视点的纵坐标为bottom
+    </div>
+    <a>7、backface-visibility:指定元素背面面向用户时是否可见。。</a>
+    <p>决定一个元素背面面向用户时是否可见，需要直接在该元素上定义 <' backface-visibility '> 属性，而不能在其父元素上，因为该属性默认为不可继承。</p>
+    <div>
+        <a>取值：</a><br/>
+        visible：指定元素背面可见，允许显示正面的镜像。<br/>
+        hidden：指定元素背面不可见。
+    </div>
+
+    <div><a href="ball.html">球体</a></div>
+
+
+
+
+</div>
+</body>
+</html>
