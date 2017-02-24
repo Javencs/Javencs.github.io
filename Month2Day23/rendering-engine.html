@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>相关术语+布局</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;background-color: #010101;color: #333;cursor:url('../mainmenu1.cur'),auto;}
+        .box{
+            width: 940px;
+            margin: 0 auto;
+            border: 3px solid black;
+            border-radius: 50px;
+            background-color: antiquewhite;
+            padding:20px 30px;
+        }
+        .box>a{
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            margin: 10px 0;
+            text-indent: 1em;
+            background-color: burlywood;
+        }
+        .box>p{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            height: auto;
+            line-height: 30px;
+            background-color: antiquewhite;
+        }
+        .box>p>a{
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: mediumblue;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        span{
+            font-size: 15px;
+            font-family: "微软雅黑";
+            width: auto;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1 style="background-color: antiquewhite;font-size: 28px">相关术语+布局</h1>
+    <a>1.静态布局（Static Layout）</a>
+    <p>在屏幕宽高有调整时，元素大小和位置不变的布局。<br/>
+        <span>布局特点：</span>窗口缩小后内容被遮挡时，拖动滚动条显示布局。<br/>
+        PC：居中布局，所有样式使用绝对宽度，高度<br/>移动设备：另外建立移动网站，以m.域名为域名</P>
+    <a>2.自适应布局（Adaptive Layout）</a>
+    <p>在屏幕宽高有调整时，元素大小不变,位置改变的布局。<br/>
+        <span>布局特点：</span>改变屏幕分辨率可以切换不同的静态局部，在每个静态布局中，元素不发生变化，相当于静态布局的一个系列<br/>
+        设计方法：使用媒体查询功能
+    </p>
+    <a>3.流体式布局（Liquid Layout）</a>
+    <p>元素宽度按照分辨率宽度进行长度、宽度的调整，但布局（位置）不变<br/>
+        <span>缺点：</span>如果屏幕尺度跨度过大，那么在相对原始设计而言过小或过大的屏幕上不能正常显示。</p>
+    <a>4.响应式布局（Responsive Layout）</a>
+    <p>元素按照分辨率宽度进行长度、宽度和位置的调整，整体布局会变化</p>
+    <p><a href="http://wow.techbrood.com/fiddle/fork?id=25477" target="_blank">四种布局的具体效果 戳这里！！！</a></p>
+
+    <a>浏览器渲染模式</a>
+    <p>浏览器渲染模式分为3种,一种是<a>怪癖模式（兼容模式、怪异模式）[Quirks mode]</a> 和 <a>标准模式 [Standars mode]</a>还有<a>几乎标准模式 （Almost standards mode ）</a>。</p>
+
+
+    <a>浏览器内核</a>
+    <span>内核分类</span><br/>
+    <p><a>Trident(IE内核)：</a>一款神奇的内核，从1997年的IE4中首次被采用（是微软在Mosaic代码的基础之上修改而来的），一直沿用到今，微软很长时间都并没有更新Trident内核，这导致了两个后果——一是Trident内核曾经几乎与W3C标准脱节（2005年），二是Trident内核的大量 Bug等安全性问题没有得到及时解决，然后加上一些致力于开源的开发者和一些学者们公开自己认为IE浏览器不安全的观点，也有很多用户转向了其他浏览器，Firefox和Opera（但是Opera浏览器因为开始的收费原因使用量并不高，现在很少被使用，如今已被360和昆仑万维收购）就是这个时候兴起的。非Trident内核浏览器的市场占有率大幅提高也致使许多网页开发人员开始注意网页标准和非IE浏览器的浏览效果问题。</p>
+    <br/>
+    <p><a>Gecko(Firefox内核)：</a>Netscape6开始采用的内核，后来的Mozilla FireFox(火狐浏览器) 也采用了该内核，Gecko的特点是代码完全公开，因此，其可开发程度很高，全世界的程序员都可以为其编写代码，增加功能。因为这是个开源内核，因此受到许多人的青睐，Gecko内核的浏览器也很多，这也是Gecko内核虽然年轻但市场占有率能够迅速提高的重要原因。事实上，Gecko引擎的由来跟IE不无关系，前面说过IE没有使用W3C的标准，这导致了微软内部一些开发人员的不满；他们与当时已经停止更新了的 Netscape的一些员工一起创办了Mozilla，以当时的Mosaic内核为基础重新编写内核，于是开发出了Gecko。不过事实上，Gecko 内核的浏览器仍然还是Firefox (火狐) 用户最多，所以有时也会被称为Firefox内核。此外Gecko也是一个跨平台内核，可以在Windows、 BSD、Linux和Mac OS X中使用。<br/>补充：JavaScript引擎是SpiderMonkey。</p>
+    <br/>
+    <p><a>Presto(Opera前内核) (已废弃)：</a>Opera12.17及更早版本曾经采用的内核，现已停止开发并废弃，该内核在2003年的Opera7中首次被使用，该款引擎的特点就是渲染速度的优化达到了极致，然而代价是牺牲了网页的兼容性。实际上这是一个动态内核，与前面几个内核的最大的区别就在脚本处理上，Presto有着天生的优势，页面的全部或者部分都能够在回应脚本事件时等情况下被重新解析。此外该内核在执行Javascrīpt的时候有着最快的速度，根据在同等条件下的测试，Presto内核执行同等Javascrīpt所需的时间仅有Trident和Gecko内核的约1/3（Trident内核最慢，不过两者相差没有多大），本文的其中一个修改者认为上述测试信息过于老旧且不完整，因为他曾做过的小测试显示Presto部分快部分慢，各内核总体相当。那次测试的时候因为Apple机的硬件条件和普通PC机不同所以没有测试WebCore内核。只可惜Presto是商业引擎，使用Presto的除开Opera以外，只剩下NDSBrowser、Wii Internet Channle、Nokia 770网络浏览器等，这很大程度上限制了Presto的发展。<br/>Opera现已改用Google Chrome的Blink内核。</p>
+    <br/>
+    <p><a>Webkit(Safari内核,Chrome内核原型,开源):</a>它是苹果公司自己的内核，也是苹果的Safari浏览器使用的内核。 Webkit引擎包含WebCore排版引擎及JavaScriptCore解析引擎，均是从KDE的KHTML及KJS引擎衍生而来，它们都是自由软件，在GPL条约下授权，同时支持BSD系统的开发。所以Webkit也是自由软件，同时开放源代码。在安全方面不受IE、Firefox的制约，所以Safari浏览器在国内还是很安全的。</p>
+
+
+</div>
+</body>
+</html>
