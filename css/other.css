@@ -1,0 +1,35 @@
+.mian{
+    width: 280px;
+    height: auto;
+    float: left;
+    border: 3px solid #333;
+    border-radius: 7px;
+    box-shadow: 0 0 3px #333;
+    background-color: #fff7c8;
+    margin:20px 0 0 80px;
+    padding: 10px 0 10px 20px;
+}
+.mian>a{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background-color:#fff7c8 ;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 7px 0 0;
+}
+.mian>a:hover{
+    text-decoration: underline;
+}
+.mian>p{
+    color:#343434;
+    background-color:#fff7c8;
+}
+.mainBox1{
+    float: left;
+    width: 425px;
+    height: auto;
+    background-color: inherit;
+}

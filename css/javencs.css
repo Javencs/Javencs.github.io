@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    cursor: url('../mainmenu1.cur'), auto;
+    font-family: "微软雅黑";
+    list-style: none;
+    text-decoration: none;
+}
+
+#main {
+    width: 100%;
+    height: auto;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    padding: 180px 0 40px;
+    background: linear-gradient(#fff 50%, rgba(245, 245, 213, 0) 0) 0 0,
+    radial-gradient(circle closest-side, #fff 53%, rgba(245, 245, 213, 0) 0) 0 0,
+    radial-gradient(circle closest-side, #fff 50%, rgba(245, 245, 213, 0) 0) 55px 0 #48B;
+    background-size: 110px 260px;
+    background-repeat: repeat-x;
+}
+
+#list {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 90px;
+    right: calc((100% - 970px) / 2);
+    z-index: 90;
+    background: none;
+}
+
+#list > li {
+    padding: 5px 12px;
+    float: left;
+    font-size: 16px;
+    border: 1px solid black;
+    margin-right: 70px;
+    box-shadow: -5px -5px 3px black;
+    border-radius: 50px;
+
+}
+
+#list > li > a {
+    cursor: pointer;
+}
+
+#back_top {
+    position: fixed;
+    padding: 8px;
+    font-size: 14px;
+    right: calc((100% - 1200px) / 2);
+    bottom: 130px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+}
+
+#main > img {
+    position: absolute;
+    top: 0;
+    left: calc((100% - 980px) / 2);
+}
+
+.box {
+    width: 940px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    box-shadow: 5px 0 5px #333;
+}
+
+.box > a {
+    display: block;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 2px;
+    width: 100%;
+    margin: 10px 0;
+    text-indent: 1em;
+    color: #f2f2f2;
+    background-color: #48B;
+}
+
+.box > p {
+    font-size: 15px;
+
+    width: auto;
+    height: auto;
+    line-height: 30px;
+}
+
+.box > p > a {
+    cursor: pointer;
+    color: mediumblue;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+span {
+    font-size: 16px;
+    width: auto;
+    color: crimson;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+pre {
+    font-family: 'Microsoft YaHei', 'Helvetica', 'Arial';
+    display: block;
+    font-size: 15px;
+    height: auto;
+    width: 100%;
+    background-color: #f6f6f6;
+    line-height: 1.5em;
+    margin-bottom: 3px;
+    padding: 10px 0;
+}

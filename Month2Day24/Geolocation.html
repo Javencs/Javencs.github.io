@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>HTML5</title>
+    <link type="text/css" href="../css/javencs.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="main">
+    <img src="../img/mine.png">
+    <ul id="list">
+        <li><a href="../index.html">首页</a></li>
+        <li><a>一月</a></li>
+        <li><a>二月</a></li>
+        <li><a href="../intel/recommend.html">网站推荐</a></li>
+    </ul>
+    <a href="#" id="back_top">回到<br/>顶部</a>
+
+    <div class="box">
+        <h1 style="font-size: 35px;font-weight: bold">CSS3——Flexible Box</h1>
+        <a>1.flex：</a>
+        <span>说明：</span><br/>
+
+        <p>复合属性。设置或检索弹性盒模型对象的子元素如何分配空间。<br/>
+            如果缩写「flex: 1」, 则其计算值为「1 1 0%」<br/>
+            如果缩写「flex: auto」, 则其计算值为「1 1 auto」<br/>
+            如果「flex: none」, 则其计算值为「0 0 auto」<br/>
+            如果「flex: 0 auto」或者「flex: initial」, 则其计算值为「0 1 auto」，即「flex」初始值
+        </p>
+        <span>取值：</span><br/>
+
+        <p>none：none关键字的计算值为: 0 0 auto<br/>
+            <' flex-grow '>：用来指定扩展比率，即剩余空间是正值时此「flex子项」相对于「flex容器」里其他「flex子项」能分配到空间比例。<br/>
+            在「flex」属性中该值如果被省略则默认为「1」<br/>
+            <' flex-shrink '>：用来指定收缩比率，即剩余空间是负值时此「flex子项」相对于「flex容器」里其他「flex子项」能收缩的空间比例。<br/>
+            在收缩的时候收缩比率会以伸缩基准值加权<br/>
+            在「flex」属性中该值如果被省略则默认为「1」<br/>
+            <' flex-basis '>：用来指定伸缩基准值，即在根据伸缩比率计算出剩余空间的分布之前，「flex子项」长度的起始数值。<br/>
+            在「flex」属性中该值如果被省略则默认为「0%」<br/>
+            在「flex」属性中该值如果被指定为「auto」，则伸缩基准值的计算值是自身的 <' width '> 设置，如果自身的宽度没有定义，则长度取决于内容。</p>
+        <span>示例：</span>
+    <pre>
+        &lt;ul class="flex"&gt;
+            &lt;li&gt;a&lt;/li&gt;
+            &lt;li&gt;b&lt;/li&gt;
+            &lt;li&gt;c&lt;/li&gt;
+        &lt;/ul&gt;
+
+        .flex{display:flex;width:800px;margin:0;padding:0;list-style:none;}
+        .flex :nth-child(1){flex:1 1 300px;}
+        .flex :nth-child(2){flex:2 2 200px;}
+        .flex :nth-child(3){flex:3 3 400px;}</pre>
+        <p style="color: midnightblue;font-weight: 600">
+            本例定义了父容器宽（即主轴宽）为1500px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么容器将有1500-900=600px的剩余宽度；<br/>
+            于是我们可以计算a,b,c将被扩展量是多少：<br/>
+            a的扩展量：(1/(1+2+3))*600，即约等于100px<br/>
+            b的扩展量：(2/(1+2+3))*600，即约等于200px<br/>
+            c的扩展量：(3/(1+2+3))*600，即约等于300px<br/>
+            最后a,b,c的实际宽度分别为：300+100=400px, 200+200=400px, 400+300=700px<br/>
+            从本例能看出：<br/>
+            当「flex-basis」在「flex」属性中不为0时（包括值为auto，此时伸缩基准值等于自身内容宽度），「flex子项」将分配容器的剩余空间（剩余空间即等于容器宽度减去各项的伸缩基准值）<br/>
+            当「flex-basis」在「flex」属性中等于0时，「flex子项」将分配容器的所有空间（因为各项的伸缩基准值相加等于0，剩余空间等于容器宽度减去各项的伸缩基准值，即减0，最后剩余空间值等于容器宽度），所以可以借助此特性，给各子项定义「flex:
+            n」来进行按比例均分容器总宽度</p>
+
+
+        <a>2.flex-grow</a>
+        <span>说明：</span><br/>
+
+        <p>设置或检索弹性盒的扩展比率。根据弹性盒子元素所设置的扩展因子作为比率来分配剩余空间。</p>
+
+        <p><span>取值：</span>&lt;number&gt;：用数值来定义扩展比率。不允许负值</p>
+        <span>示例：</span>
+    <pre>
+        &lt;ul class="flex"&gt;
+            &lt;li&gt;a&lt;/li&gt;
+            &lt;li&gt;b&lt;/li&gt;
+            &lt;li&gt;c&lt;/li&gt;
+        &lt;/ul&gt;
+
+        .flex{display:flex;width:600px;margin:0;padding:0;list-style:none;}
+        .flex li:nth-child(1){width:200px;}
+        .flex li:nth-child(2){flex-grow:1;width:50px;}
+        .flex li:nth-child(3){flex-grow:3;width:50px;}
+    </pre>
+        <p style="color: midnightblue;font-weight: 600">
+            flex-grow的默认值为0，如果没有显示定义该属性，是不会拥有分配剩余空间权利的。<br/>
+            本例中b,c两项都显式的定义了flex-grow，flex容器的剩余空间分成了4份，其中b占1份，c占3分，即1:3<br/>
+            flex容器的剩余空间长度为：600-200-50-50=300px，所以最终a,b,c的长度分别为：<br/>
+            a: 50+(300/4)=200px<br/>
+            b: 50+(300/4*1)=125px<br/>
+            a: 50+(300/4*3)=275px
+        </p>
+
+        <a>3.flex-shrink</a>
+        <span>说明：</span><br/>
+
+        <p>设置或检索弹性盒的收缩比率。根据弹性盒子元素所设置的收缩因子作为比率来收缩空间。</p>
+
+        <p><span>取值：</span>&lt;number&gt;：用数值来定义收缩比率。不允许负值</p>
+        <span>示例：a,b,c将按照1:1:3的比率来收缩空间</span>
+    <pre>
+        &lt;ul class="flex"&gt;
+            &lt;li&gt;a&lt;/li&gt;
+            &lt;li&gt;b&lt;/li&gt;
+            &lt;li&gt;c&lt;/li&gt;
+        &lt;/ul&gt;
+
+        .flex{display:flex;width:400px;margin:0;padding:0;list-style:none;}
+        .flex li{width:200px;}
+        .flex li:nth-child(3){flex-shrink:3;}
+    </pre>
+        <p style="color: midnightblue;font-weight: 600">
+            flex-shrink的默认值为1，如果没有显示定义该属性，将会自动按照默认值1在所有因子相加之后计算比率来进行空间收缩。<br/>
+            本例中c显式的定义了flex-shrink，a,b没有显式定义，但将根据默认值1来计算，可以看到总共将剩余空间分成了5份，其中a占1份，b占1份，c占3分，即1:1:3<br/>
+            我们可以看到父容器定义为400px，子项被定义为200px，相加之后即为600px，超出父容器200px。那么这么超出的200px需要被a,b,c消化<br/>
+            通过收缩因子，所以加权综合可得200*1+200*1+200*3=1000px；<br/>
+            于是我们可以计算a,b,c将被移除的溢出量是多少：<br/>
+            a被移除溢出量：(200*1/1000)*200，即约等于40px<br/>
+            b被移除溢出量：(200*1/1000)*200，即约等于40px<br/>
+            c被移除溢出量：(200*3/1000)*200，即约等于120px<br/>
+            最后a,b,c的实际宽度分别为：200-40=160px, 200-40=160px, 200-120=80px
+        </p>
+
+        <a>4.flex-basis</a>
+        <span>说明：</span><br/>
+
+        <p>设置或检索弹性盒伸缩基准值。<br/>
+            如果所有子元素的基准值之和大于剩余空间，则会根据每项设置的基准值，按比率伸缩剩余空间<br/>
+            对应的脚本特性为flexBasis。</p>
+
+        <p><span>取值：</span><br/>
+            &lt;length&gt;：用长度值来定义宽度。不允许负值<br/>
+            &lt;percentage&gt;：用百分比来定义宽度。不允许负值<br/>
+            auto：无特定宽度值，取决于其它属性值<br/>
+            content：基于内容自动计算宽度</p>
+        <span>hover</span>
+
+
+    </div>
+</div>
+</body>
+</html>
