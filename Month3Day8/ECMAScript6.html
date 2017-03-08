@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>ECMAScript6</title>
+    <link type="text/css" href="../css/javencs.css" rel="stylesheet">
+    <style>
+        img{display:block;margin: 0 auto}
+    </style>
+</head>
+<body>
+<div id="main">
+    <img src="../img/mine.png">
+    <ul id="list">
+        <li><a href="../index.html">首页</a></li>
+        <li><a>一月</a></li>
+        <li><a>二月</a></li>
+        <li><a href="../intel/recommend.html">网站推荐</a></li>
+    </ul>
+    <a href="#" id="back_top">回到<br/>顶部</a>
+
+    <div class="box">
+        <h1 style="font-size: 35px;font-weight: bold">ECMAScript6</h1>
+        <P>ECMAScript是一种由Ecma国际（前身为欧洲计算机制造商协会,英文名称是European Computer ManufacturersAssociation）通过ECMA-262标准化的脚本程序设计语言。<br/>
+            ECMAScript是JavaScript的组成部分,它规定了我们javascript的最基础的部分。ES6是ECMAScript 6的缩写简称。
+        </P>
+        <a>1.ECMAScript 的历史</a>
+        <p><span>1996 年 11 月</span>，Netscape 公司，决定将 JavaScript 提交给国际标准化组织 ECMA。次年，ECMA发布 ECMAScript。这个版本就是 ECMAScript 1.0 版。</p>
+        <p><span>1998 年 6 月</span>，ECMAScript 2.0 版发布。</p>
+        <p><span>1999 年 12 月</span>，ECMAScript3.0 版发布，成为 JavaScript 的通行标准，得到了广泛支持。</p>
+        <p><span>2007 年 10 月</span>，ECMAScript4.0 版草案发布，对 3.0 版做了大幅升级，但是，以 Yahoo、Microsoft、Google为首的大公司，反对 JavaScript 的大幅升级，主张小幅改动，各方分歧太大，争论过于激进，ECMA 开会决定，中止 ECMAScript 4.0 的开发。</p>
+        <p><span>2009 年 12 月</span>，ECMAScript5.0 版正式发布。</p>
+        <P><span>2015 年 6 月</span>，ECMAScript 6 正式通过，成为国际标准。</P>
+
+        <a>2.最常用的ES6特性</a>
+        
+        <p><span>let：</span>声明变量，let则实际上为JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。而var只有全局作用域和函数作用域。<br/>
+            <span>const:</span>常量声明，不存在变量提升、不能再次被赋值、一旦声明，不能改变值。<br/>
+            <span>箭头函数：</span>(注：小括号不能省略，它的原型是object)</p>
+        <pre>
+            let arr = [2,6,33,13,32];
+            let arrl = arr.length;
+            /*ES6箭头函数*/
+            let foo = (arry) => {
+                let arr2 = [];
+                for(let i = 0;i&gt;arrl;i++){
+                    for(let s = i+1;s&gt;arrl;s++){
+                        if(arry[i]&gt;arry[s]){
+                            let max = arry[s];
+                            arry[s] = arry[i];
+                            arry[i] = max;
+                        }
+                    }
+                }
+                console.log(arry)
+            }
+            foo(arr);</pre>
+
+        <span>解构赋值：(注：如果数值数量小于变量数量，空缺的变量输出undefined;如果变量值少于数值数量，则多的数值被忽略)</span>
+        <pre>
+            let [a,b,c]=[1,3,2];
+            console.log(a,b,c);</pre>
+        <span>解构赋缺值：</span>
+        <pre>
+            let {name,age} = {name:"Javen",age:18};
+            let {name2,age2} = {age2:18,name2:"Javen"};
+            console.log(name2,age2);
+            console.log(name,age);</pre>
+        <p>输出都是：Javen 18</p>
+    </div>
+</div>
+</body>
+</html>
