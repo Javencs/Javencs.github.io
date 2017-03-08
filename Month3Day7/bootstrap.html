@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>bootstrap</title>
+    <link type="text/css" href="../css/javencs.css" rel="stylesheet">
+    <style>
+        img{display:block;margin: 0 auto}
+    </style>
+</head>
+<body>
+<div id="main">
+    <img src="../img/mine.png">
+    <ul id="list">
+        <li><a href="../index.html">首页</a></li>
+        <li><a>一月</a></li>
+        <li><a>二月</a></li>
+        <li><a href="../intel/recommend.html">网站推荐</a></li>
+    </ul>
+    <a href="#" id="back_top">回到<br/>顶部</a>
+
+    <div class="box">
+        <h1 style="font-size: 35px;font-weight: bold">bootstrap 组件</h1>
+        <a>1.Glyphicons 字体图标</a>
+        <p><a href="http://v3.bootcss.com/components/#glyphicons">更多内容戳这里</a></p>
+        <span>所有可用的图标：</span>
+        <img src="images/img1.png">
+        <img src="images/img2.png">
+        <img src="images/img3.png">
+        <img src="images/img4.png">
+        <img src="images/img5.png">
+        <img src="images/img6.png">
+        
+        <p><span>如何使用：</span><br/>1.不要和其他组件混合使用<br/>2.只对内容为空的元素起作用</p>
+        <pre>
+        &lt;button type="button" class="btn btn-default btn-lg"&gt;
+            &lt;span class="glyphicon glyphicon-star" aria-hidden="true"&gt;&lt;/span&gt; Star
+        &lt;/button&gt;</pre>
+        <a>2.下拉菜单</a>
+        <p>将下拉菜单触发器和下拉菜单都包裹在 .dropdown 里，配合使用dropdown-menu</p>
+        <pre>
+            &lt;div class="dropdown"&gt;
+                &lt;button class="btn btn-default" type="button" data-toggle="dropdown"&gt;
+                    Dropdown  //触发按钮
+                    &lt;span class="caret"&gt;&lt;/span&gt; //小三角
+                &lt;/button&gt;
+                &lt;ul class="dropdown-menu"&gt;  //下拉菜单
+                    &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                    &lt;li role="separator" class="divider"&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        </pre>
+        <p>通过为下拉菜单的父元素设置 .dropup 类，可以让菜单向上弹出（默认是向下弹出的）。</p>
+
+        <p><span>对齐：</span>默认情况下，下拉菜单自动沿着父元素的上沿和左侧被定位为 100% 宽度,.dropdown-menu-right 类可以让菜单右对齐。(不建议使用 .pull-right)</p>
+        <p><span>标题：</span>&lt;li class="dropdown-header"&gt;Dropdown header&lt;/li&gt;</p>
+        <p><span>分割线：</span>&lt;li role="separator" class="divider"&gt;&lt;/li&gt;</p>
+        <p><span>禁用的菜单项：</span>.disabled</p>
+        <a>3.按钮组(.btn-group)</a>
+        <p><span>按钮工具栏：</span>把一组 &lt;div class="btn-group"&gt; 组合进一个 &lt;div class="btn-toolbar"&gt; 中就可以做成更复杂的组件。&lt;li role="separator" class="divider"&gt;&lt;/li&gt;</p>
+        <p><span>尺寸：</span>.btn-group-lg、.btn-group-sm、.btn-group-xs</p>
+        <p><span>嵌套：</span>想要把下拉菜单混合到一系列按钮中，只须把 .btn-group 放入另一个 .btn-group 中。</p>
+        <p><span>垂直排列：</span>.btn-group-vertical(分列式按钮下拉菜单不支持这种方式。)</p>
+        <p><span>两端对齐排列的按钮组：</span><br/>
+            关于 &lt;a&gt; 元素,只须将一系列 .btn 元素包裹到 .btn-group.btn-group-justified 中即可。<br/>
+            关于 &lt;button&gt; 元素为了将 &lt;button&gt; 元素用于两端对齐的按钮组中，必须将每个按钮包裹进一个按钮组中。</p>
+        <a>4.按钮式下拉菜单</a>
+        <p>把按钮式下拉菜单放到.btn-group中</p>
+        <p><span>分裂式按钮下拉菜单：</span>只是多一个分开的按钮.</p>
+        <p><span>尺寸：</span>按钮式下拉菜单适用所有尺寸的按钮。</p>
+        <p><span>向上弹出式菜单：</span>给父元素添加 .dropup 类就能使触发的下拉菜单朝上方打开。</p>
+        <a>5.输入框组</a>
+        <p>通过在文本输入框 &lt;input&gt; 前面、后面或是两边加上文字或按钮，可以实现对表单控件的扩展。为 .input-group 赋予 .input-group-addon 或 .input-group-btn 类，可以给 .form-control 的前面或后面添加额外的元素。</p>
+        <P>不支持在输入框的单独一侧添加多个额外元素（.input-group-addon 或 .input-group-btn）。我们不支持在单个输入框组中添加多个表单控件。</P>
+        <p><span>尺寸：</span>.input-group-lg、.input-group-sm</p>
+        <p><span>作为额外元素的多选框和单选框：</span>可以将多选框或单选框作为额外元素添加到输入框组中。</p>
+        <p><span>作为额外元素的按钮：</span>为输入框组添加按钮需要额外添加一层嵌套，不是 .input-group-addon，而是添加 .input-group-btn 来包裹按钮元素。</p>
+        <p><span>作为额外元素的按钮式下拉菜单：</span>可以将按钮式下拉菜单作为额外元素添加到输入框组中。</p>
+        <p><span>作为额外元素的分裂式按钮下拉菜单:</span>可以将分裂式按钮下拉菜单作为额外元素添加到输入框组中。</p>
+        <a>6.导航</a>
+        <p>Bootstrap 中的导航组件都依赖同一个 .nav 类，状态类也是共用的。改变修饰类可以改变样式。</p>
+        <p><span>标签页:</span>.nav-tabs</p>
+        <p><span>胶囊式标签页:</span>.nav-pills</p>
+        <p><span>垂直方向胶囊式标签页:</span>.nav-stacked</p>
+        <p><span>两端对齐的标签页:</span>在大于 768px 的屏幕上，通过 .nav-justified 类可以很容易的让标签页或胶囊式标签呈现出同等宽度。在小屏幕上，导航链接呈现堆叠样式。</p>
+        <p><span>禁用的链接:</span>.disabled</p>
+        <p><span>添加下拉菜单:</span>ul .nav-tabs 在li里嵌套一个下拉菜单</p>
+        <p><span>带下拉菜单的胶囊式标签页：</span>.nav-pills,其他同上</p>
+        <a>7.导航条</a>
+        <p>.navbar .navbar-default</p>
+        <p><span>品牌图标:</span>.navbar-header里替换为img</p>
+        <p><span>表单:</span>将表单放置于 .navbar-form 之内可以呈现很好的垂直对齐，并在较窄的视口（viewport）中呈现折叠状态。（ 某些表单组件，例如输入框组，可能需要设置一个固定宽度，从而在导航条内有合适的展现。）</p>
+        <pre>
+            &lt;form class="navbar-form navbar-left" role="search"&gt;
+                &lt;div class="form-group"&gt;
+                    &lt;input type="text" class="form-control" placeholder="Search"&gt;
+                &lt;/div&gt;
+                &lt;button type="submit" class="btn btn-default"&gt;Submit&lt;/button&gt;
+            &lt;/form&gt;</pre>
+        <p><span>按钮:</span>于不包含在 &lt;form&gt; 中的 &lt;button&gt; 元素，加上 .navbar-btn 后，可以让它在导航条里垂直居中。</p>
+        <p><span>文本:</span>把文本包裹在 .navbar-text中时，为了有正确的行距和颜色，通常使用 &lt;p&gt; 标签。</p>
+        <p><span>胶囊式标签页:</span>.nav-pills</p>
+        <p><span>非导航的链接:</span>.navbar-link 类可以让链接有正确的默认颜色和反色设置</p>
+        <p><span>胶囊式标签页:</span>.nav-pills</p>
+        <p><span>组件排列:</span>.navbar-left 和 .navbar-right</p>
+        <p><span>固定在顶部:</span>.navbar-fixed-top</p>
+        <p><span>固定在底部:</span>.navbar-fixed-bottom</p>
+        <p><span>静止在顶部:</span>.navbar-static-top 类即可创建一个与页面等宽度的导航条，它会随着页面向下滚动而消失。</p>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+        <a>8.路径导航:.breadcrumb 在一个带有层次的导航结构中标明当前页面的位置。</a>
+        <a>9.分页</a>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+        <p><span>反色的导航条:</span>.navbar-inverse</p>
+
+
+
+
+    </div>
+</div>
+</body>
+</html>

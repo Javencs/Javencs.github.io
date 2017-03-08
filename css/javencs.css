@@ -5,7 +5,6 @@
     color: #333;
     cursor: url('../mainmenu1.cur'), auto;
     font-family: "微软雅黑";
-    list-style: none;
     text-decoration: none;
 }
 
@@ -32,6 +31,7 @@
     right: calc((100% - 970px) / 2);
     z-index: 90;
     background: none;
+    list-style: none;
 }
 
 #list > li {
@@ -42,7 +42,16 @@
     margin-right: 70px;
     box-shadow: -5px -5px 3px black;
     border-radius: 50px;
+    cursor: pointer;
+}
 
+#list > li:hover{
+     background-color: #48B;
+ }
+
+#list > li:hover>a{
+    background-color: #48B;
+    color: #fff;
 }
 
 #list > li > a {
@@ -119,4 +128,17 @@ pre {
     line-height: 1.5em;
     margin-bottom: 3px;
     padding: 10px 0;
+}
+
+.box > ul {
+     width: 95%;
+     height: auto;
+    margin-left: 20px;
+ }
+
+.box > ul > li {
+    width: 100%;
+    height: auto;
+    line-height: 30px;
+    font-size: 14px;
 }
