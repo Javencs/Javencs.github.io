@@ -109,19 +109,52 @@
         <p><span>静止在顶部:</span>.navbar-static-top 类即可创建一个与页面等宽度的导航条，它会随着页面向下滚动而消失。</p>
         <p><span>反色的导航条:</span>.navbar-inverse</p>
         <a>8.路径导航:.breadcrumb 在一个带有层次的导航结构中标明当前页面的位置。</a>
-        <a>9.分页</a>
-        <p><span>反色的导航条:</span>.navbar-inverse</p>
-        <p><span>反色的导航条:</span>.navbar-inverse</p>
-        <p><span>反色的导航条:</span>.navbar-inverse</p>
-        <p><span>反色的导航条:</span>.navbar-inverse</p>
-        <p><span>反色的导航条:</span>.navbar-inverse</p>
-        <p><span>反色的导航条:</span>.navbar-inverse</p>
-        <p><span>反色的导航条:</span>.navbar-inverse</p>
-        <p><span>反色的导航条:</span>.navbar-inverse</p>
-        <p><span>反色的导航条:</span>.navbar-inverse</p>
-
-
-
+        <a>9.分页：.pagination</a>
+        <p><span>禁用和激活状态:</span>.disabled</p>
+        <p><span>尺寸:</span>pagination-lg 或 .pagination-sm</p>
+        <p><span>翻页:</span>.pager</p>
+        <p><span>对齐链接:</span>.previous .next</p>
+        <p><span>可选的禁用状态:</span>.disabled</p>
+        <a>10.标签</a>
+        <p><span>可用的变体:</span>.label-default、.label-primary、.label-success、.label-info、.label-warning、.label-danger</p>
+        <img src="images/label.png">
+        <a>11.徽章(兼容IE8)</a>
+        <p>给链接、导航等元素嵌套 &lt;span class="badge"&gt; 元素，可以很醒目的展示新的或未读的信息条目。</p>
+        <a>12.巨幕</a>
+        <p>.jumbotron 这是一个轻量、灵活的组件，它能延伸至整个浏览器视口来展示网站上的关键内容。如果需要让巨幕组件的宽度与浏览器宽度一致并且没有圆角，请把此组件放在所有 .container 元素的外面，并在组件内部添加一个 .container 元素。</p>
+        <a>13.页头</a>
+        <p>.page-header 能够为 h1 标签增加适当的空间，并且与页面的其他部分形成一定的分隔。它支持 h1 标签内内嵌 small 元素的默认效果，还支持大部分其他组件（需要增加一些额外的样式）。</p>
+        <a>14.缩略图</a>
+        <p>.thumbnail 通过缩略图组件扩展 Bootstrap 的 栅格系统，可以很容易地展示栅格样式的图像、视频、文本等内容。</p>
+        <a>15.警告框</a>
+        <p>将任意文本和一个可选的关闭按钮组合在一起就能组成一个警告框，.alert 类是必须要设置的，另外我们还提供了有特殊意义的4个类（例如，.alert-success），代表不同的警告信息。</p>
+        <p><span>默认样式的实例:</span>.alert-success、.alert-info、.alert-warning、.alert-danger</p>
+        <img src="images/alter.png">
+        <a>16.进度条</a>
+        <p><span>基本:</span>.progress</p>
+        <pre>
+            &lt;div class="progress"&gt;
+                &lt;div class="progress-bar" style="width: 60%;"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;</pre>
+        <p><span>带有提示标签的进度条:</span>在上方进度条div里添加内容，eg：60%（在展示很低的百分比时，如果需要让文本提示能够清晰可见，可以为进度条设置 min-width 属性。）</p>
+        <p><span>根据情境变化效果:</span>.progress-bar-success、.progress-bar-info、.progress-bar-warning、.progress-bar-danger</p>
+        <p><span>条纹效果:</span>IE9 及更低版本不支持。.progress-bar-striped</p>
+        <P><span>动画效果:</span>.active IE9 及更低版本的浏览器不支持。</P>
+        <p><span>堆叠效果:</span>把多个进度条放入同一个 .progress 中，使它们呈现堆叠的效果。</p>
+        <a>17.媒体对象</a>
+        <p>.media > .media-left .media-body > .media-object .media-heading</p>
+        <p>.media-left 和 .media-right 替代了他们，不同之处是，在 html 结构中， .media-right 应当放在 .media-body 的后面。</p>
+        <P><span>对齐:</span>图片或其他媒体类型可以顶部、中部或底部对齐。默认是顶部对齐。</P>
+        <P><span>媒体对象列表:</span>用一点点额外的标记，就能在列表内使用媒体对象组件（对评论或文章列表很有用）。</P>
+        <a>18.列表组</a>
+        <P><span>基本:</span>.list-group > .list-group-item</P>
+        <P><span>徽章:</span>给列表组加入徽章组件，它会自动被放在右边。</P>
+        <P><span>链接:</span>用 a 标签代替 li 标签可以组成一个全部是链接的列表组（还要注意的是，我们需要将 ul 标签替换为 div 标签）。没必要给列表组中的每个元素都加一个父元素。</P>
+        <P><span>按钮:</span>列表组中的元素也可以直接就是按钮（也同时意味着父元素必须是 div 而不能用 ul 了），并且无需为每个按钮单独包裹一个父元素。注意不要使用标准的 .btn 类！</P>
+        <P><span>被禁用的条目:</span>为 .list-group-item 添加 .disabled 类</P>
+        <P><span>情境类:</span>.list-group-item-success、.list-group-item-info、.list-group-item-warning、.list-group-item-danger</P>
+        <p>还可以为列表中的条目设置 .active 状态。</p>
 
     </div>
 </div>
