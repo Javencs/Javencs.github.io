@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Vue.js</title>
+    <link type="text/css" href="../css/javencs.css" rel="stylesheet">
+    <style>
+        img {
+            display: block;
+            margin: 0 auto
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <img src="../img/mine.png">
+    <ul id="list">
+        <li><a href="../index.html">首页</a></li>
+        <li><a>一月</a></li>
+        <li><a>二月</a></li>
+        <li><a href="../intel/recommend.html">网站推荐</a></li>
+    </ul>
+    <a href="#" id="back_top">回到<br/>顶部</a>
+
+    <div class="box">
+        <h1 style="font-size: 35px;font-weight: bold">Vue.js</h1>
+        <p><a href="http://cn.vuejs.org/" target="_blank">Vue 中文官网</a></p>
+        <P>Vue.js是当下很火的一个JavaScript
+            MVVM库，它是以数据驱动和组件化的思想构建的。相比于Angular.js，Vue.js提供了更加简洁、更易于理解的API，使得我们能够快速地上手并使用Vue.js。<br/>
+            Vue.js是数据驱动的，你无需手动操作DOM。它通过一些特殊的HTML语法，将DOM和数据绑定起来。一旦你创建了绑定，DOM将和数据保持同步，每当变更了数据，DOM也会相应地更新。
+        </P>
+        <a>1.小胡子语法</a>
+        <pre>
+            &lt;div id="app"&gt;
+                {{ message }}
+            &lt;/div&gt;
+            &lt;script&gt;
+                new Vue({
+                    el: '#app',
+                    data: {
+                        message: 'Hello Word!'
+                    }
+                })
+            &lt;/script&gt;</pre>
+        <p>此时，div 里显示Hello Word!</p>
+
+        <a>2.双向绑定</a>
+
+        <p>将message绑定到文本框，当更改文本框的值时，&lt;p&gt;{{ message }}&lt;/p&gt; 中的内容也会被更新。</p>
+        <pre>
+            &lt;div id="app"&gt;
+                &lt;p&gt;{{ message }}&lt;/p&gt;
+                &lt;input type="text" v-model="message"/&gt;
+            &lt;/div&gt;</pre>
+        <img src="eg.gif">
+        <a>3.Vue.js的常用指令</a>
+
+        <p><span>v-text：</span>更新元素的 textContent。如果要更新部分的 textContent ，需要使用 {{ Mustache }} 插值。</p>
+
+        <p><span>v-html：</span>更新元素的 innerHTML 。</p>
+
+        <p><span>v-for：</span>v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：<br/>
+            v-for="item in items"或v-for="(item,index) in items"<br/>
+            items是一个数组，item是当前被遍历的数组元素,index是item的索引。</p>
+        <pre>
+            &lt;div id="app"&gt;
+                &lt;table&gt;
+                    &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Name&lt;/th&gt;
+                        &lt;th&gt;Age&lt;/th&gt;
+                    &lt;th&gt;Sex&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody&gt;
+                    &lt;tr v-for="person in people"&gt;
+                        &lt;td>{{ person.name  }}&lt;/td&gt;
+                        &lt;td&gt;{{ person.age  }}&lt;/td&gt;
+                        &lt;td&gt;{{ person.sex  }}&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;/tbody&gt;
+               &lt;/table&gt;
+            &lt;/div&gt;
+            &lt;script&gt;
+                var vm = new Vue({
+                    el: '#app',
+                    data: {
+                        people: [
+                                {name: 'Jack',age: 30,sex: 'Male'},
+                                {name: 'Bill',age: 26,sex: 'Male'},
+                                {name: 'Tracy',age: 22,sex: 'Female'},
+                                {name: 'Chris',age: 36,sex: 'Male'}]
+                        }
+                })
+            &lt;/script&gt;</pre>
+
+
+        <p><span>v-if：</span>v-if是条件渲染指令，它根据表达式的真假来删除和插入元素，它的基本语法：v-if="expression"<br/>
+            expression是一个返回bool值的表达式，表达式可以是一个bool属性，也可以是一个返回bool的运算式。</p>
+        <pre>
+            &lt;div id="app"&gt;
+                &lt;h1 v-if="age &gt;= 25"&gt;Age: {{ age }}&lt;/h1&gt;
+                &lt;h1 v-if="name.indexOf('jack') &gt;= 0"&gt;Name: {{ name }}&lt;/h1&gt;
+            &lt;/div&gt;
+            &lt;script&gt;
+                new Vue({
+                    el: '#app',
+                    data: {
+                        age: 28,
+                        name: 'keepfool'
+                    }
+                })
+            &lt;/script&gt;
+        </pre>
+        <p>第一个匹配年龄 条件 为真，所以显示Age：28；<br/>第二个jack匹配keepfool，结果为0，条件为假，所在的h1标签都不显示（h1标签被注释）。</p>
+
+        <P><span>v-show：</span>v-show也是条件渲染指令，和v-if指令不同的是，使用v-show指令的元素始终会被渲染到HTML，它只是简单地为元素设置CSS的style属性——display，如果不符合条件，所在的标签不会被删除，而是display：none。
+        </P>
+
+        <p><span>v-else：</span>可以用v-else指令为v-if或v-show添加一个“else块”。v-else元素必须立即跟在v-if或v-show元素的后面——否则它不能被识别。<br/>
+            v-else元素是否渲染在HTML中，取决于前面使用的是v-if还是v-show指令。</p>
+        <pre>
+            &lt;div id="app"&gt;
+                &lt;h1 v-if="age &gt;= 25"&gt;Age: {{ age }}&lt;/h1&gt;
+                &lt;h1 v-if="name.indexOf('keep') &gt;= 0"&gt;Name: {{ name }}&lt;/h1&gt;
+                &lt;h1 v-else="sex"&gt;sex: {{ sex }}&lt;/h1&gt;
+            &lt;/div&gt;
+
+            &lt;script&gt;
+                new Vue({
+                    el: '#app',
+                    data: {
+                        age: 28,
+                        name: 'keepfool'，
+                        sex: '女'
+
+                    }
+                })
+            &lt;/script&gt;
+        </pre>
+        <p>以上分别显示————Age:28; Name:keepfool;<br/>
+            因为else前面的v-if为true，所以就没else什么事儿了，同时v-else不会渲染到HTML（如果前面的是v-show则不管是否为true，v-else都会渲染到HTML）；如果v-if为false，那么v-else就会替补啦
+        </p>
+
+
+        <p><span>v-bind：</span>v-bind指令可以在其名称后面带一个参数，中间放一个冒号隔开，这个参数通常是HTML元素的特性（attribute），例如：v-bind:class;<br/>
+            v-bind:argument="expression";<br/>
+            下面这段代码构建了一个简单的分页条，v-bind指令作用于元素的class特性上。</p>
+    <pre>
+        &lt;div id="app"&gt;
+            &lt;ul class="pagination"&gt;
+                &lt;li v-for="n in pageCount"&gt;
+                    &lt;a href="javascripit:void(0)" v-bind:class="activeNumber === n + 1 ? 'active' : ''"&gt;{{ n + 1 }}&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+        &lt;script&gt;
+                new Vue({
+                    el: '#app',
+                    data: {
+                        activeNumber: 1,
+                        pageCount: 10
+                    }
+                })
+        &lt;/script&gt;
+    </pre>
+        <p>v-for每次遍历产生变量n，v-bind里class通过判断activeNumber是否等于n+1，等于则active。</p>
+        <p><span>v-on：</span>v-on指令用于给监听DOM事件。常见的v-on:click;v-on:keyup等</p>
+        <p>v-on有两种调用方式：<span>绑定一个方法（让事件指向方法的引用），或者使用内联语句。</span></p>
+        <pre>
+            &lt;div id="app"&gt;
+                    &lt;!--click事件直接绑定一个方法--&gt;
+                    &lt;button v-on:click="greet"&gt;Greet&lt;/button&gt;
+                    &lt;!--click事件使用内联语句--&gt;
+                    &lt;button v-on:click="say('Hi')"&gt;Hi&lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;script&gt;
+                new Vue({
+                    el: '#app',
+                    data: {
+                        methods: {
+                            greet: function() {
+                                // // 方法内 `this` 指向 vm
+                                alert(this.message)
+                            },
+                            say: function(msg) {
+                                alert(msg)
+                            }
+                        }
+                    }
+                })
+            &lt;/script&gt;
+        </pre>
+    </div>
+</div>
+</body>
+</html>
