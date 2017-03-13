@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Vue 数据操作</title>
+    <link type="text/css" href="../css/javencs.css" rel="stylesheet">
+    <style>
+        img {
+            display: block;
+            margin: 0 auto
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <img src="../img/mine.png">
+    <ul id="list">
+        <li><a href="../index.html">首页</a></li>
+        <li><a>一月</a></li>
+        <li><a>二月</a></li>
+        <li><a href="../intel/recommend.html">网站推荐</a></li>
+    </ul>
+    <a href="#" id="back_top">回到<br/>顶部</a>
+
+    <div class="box">
+        <h1 style="font-size: 35px;font-weight: bold">Vue 数据操作</h1>
+
+        <a>1.生成表格</a>
+        <p>初学VueJS，老师先让我们用它来生成信息统计表，开始认为很简单，写个table，在tr上添加v-for，结果。。。试了很多方法都不行，最后就直接每次v-for遍历都生成一个table，程序既臃肿又不美观<br/>
+        后来在看相关博客的时候才发现原来还可以在tr里生成多个td，使td用小胡子语法获取对应数据，真真是想歪了，没想到还可以这么玩。。。</p>
+        <pre>
+            &lt;div id="app"&gt;
+                &lt;table class="table table-hover table-bordered text-center" style="margin-top: 30px"&gt;
+                    &lt;tr v-for="(item,index) in itemsO"&gt;
+                        &lt;td&gt;{{item.num}}&lt;/td&gt;
+                        &lt;td&gt;{{item.name}}&lt;/td&gt;
+                        &lt;td&gt;{{item.age}}&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;script&gt;
+                new Vue({
+                    el: '#app',
+                    data: {
+                        message: 'Hello Word!',
+                        itemsO: [
+                            {num:'序号',name: "姓名", age:"年龄"},
+                            {num:1,name:'路人甲',age:'23'},
+                            {num:2,name:'路人乙',age:'22'},
+                            {num:3,name:'路人甲',age:'22'}
+                        ]
+                    }
+                })
+            &lt;/script&gt;</pre>
+        <p>这样就可以生成表格了，恍然大悟。。。</p>
+        <a>2.添加数据</a>
+        <p>既然可以如此方便的添加表格，那么添加数据就简单了，以下用简单的面板展示数据，就不用table了;先增加input，方便用户输入想添加的数据。</p>
+
+        <pre>
+            &lt;ul class="list-group"&gt;
+                &lt;li class="list-group-item" v-for="(list , index) in listmessage"&gt;
+                    {{list.add}}
+                &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;input type="text" placeholder="添加数据" class="form-control" v-model="addmessage"&gt;
+            &lt;button type="button" class="btn btn-success"  v-on:click="addStr"&gt;添加&lt;/button&gt;
+        </pre>
+        <p>一个有点丑的界面，然而这并不重要。。。</p>
+        <pre>
+            &lt;script&gt;
+                window.localStorage.setItem("name",JSON.stringify({add:"Welcome Vue"}));
+                var datas = JSON.parse(window.localStorage.getItem("name"));
+                var changeMess;
+                if(datas.length>0){
+                    changeMess = datas;
+                }else{
+                    changeMess = [{add:"Welcome Vue"}];
+                }
+                new Vue({
+                    el: '#app',
+                    data: {
+                        listmessage:changeMess,
+                        addmessage:""
+                    }，
+                    methods:{
+                        addStr:function(){
+                            var obj = {add:this.addmessage};
+                            this.listmessage.push(obj);
+                            this.addmessage = "";
+                            window.localStorage.setItem("name",JSON.stringify(this.listmessage));
+                        }
+                    }
+                })
+            &lt;/script&gt;
+        </pre>
+        <p>给listmessage的数组添加元素的原理，就可以简单的实现动态添加数据的效果啦，但是如果没用window.localStorage，你会发现辛苦存好久的信息因为不小心刷新就清零了，有木有很心累。。。同时每次保存数据后，给输入框内容清除，这样也方便下次数据输入。</p>
+        <a>3.删除数据</a>
+        <p>话说删除数据，在不知道上面第一种方法时，我以为是VueJS的魔种方法，于是开始翻找手册有没有可用的，结果没找到，好吧那就去问度娘，结果发现回答的人技术都太高级，看不懂，直到今天老师揭晓谜底，当时的我是心累的，我不会告诉你我忘记数组还有个.splice的方法了，T…T</p>
+        <pre>
+            //先在每行li上添加的删除按钮
+            &lt;li class="list-group-item" v-for="(list , index) in listmessage"&gt;
+                    {{list.add}}
+                    &lt;button type="button" class="btn btn-primary pull-right btn-xs" v-on:click="del(index)"&gt;删除&lt;/button&gt;
+            &lt;/li&gt;
+
+            //增加删除
+            &lt;script&gt;
+                window.localStorage.setItem("name",JSON.stringify({add:"Welcome Vue"}));
+                var datas = JSON.parse(window.localStorage.getItem("name"));
+                var changeMess;
+                if(datas.length>0){
+                    changeMess = datas;
+                }else{
+                    changeMess = [{add:"Welcome Vue"}];
+                }
+                new Vue({
+                    el: '#app',
+                    data: {
+                        listmessage:changeMess,
+                        addmessage:""
+                    }，
+                    methods:{
+                        addStr:function(){
+                            var obj = {add:this.addmessage};
+                            this.listmessage.push(obj);
+                            this.addmessage = "";
+                            window.localStorage.setItem("name",JSON.stringify(this.listmessage));
+                        }，
+                        del:function(index){
+                            this.listmessage.splice(index,1);
+                            window.localStorage.setItem("name",JSON.stringify(this.listmessage));
+                            datas = JSON.parse(window.localStorage.getItem("name"));
+                        }
+                    }
+                })
+            &lt;/script&gt;
+        </pre>
+        <p>如此如此，这般这般。搞定鸟~</p>
+
+        <a>4.跑马灯</a>
+        <pre>
+             &lt;marquee direction="up" scrollamount="1" style="width: 210px;height: 100px" id=""&gt;我动起来啦！&lt;/marquee&gt;
+        </pre>
+        <p><a href="http://www.cnblogs.com/tuyile006/archive/2007/03/28/691329.html">详细marquee</a></p>
+
+    </div>
+</div>
+</body>
+</html>
