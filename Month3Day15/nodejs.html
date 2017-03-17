@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>nodeJS</title>
+    <link type="text/css" href="../css/javencs.css" rel="stylesheet">
+    <style>
+        img {
+            display: block;
+            margin: 0 auto
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <img src="../img/mine.png">
+    <ul id="list">
+        <li><a href="../index.html">首页</a></li>
+        <li><a>一月</a></li>
+        <li><a>二月</a></li>
+        <li><a href="../intel/recommend.html">网站推荐</a></li>
+    </ul>
+    <a href="#" id="back_top">回到<br/>顶部</a>
+
+    <div class="box">
+        <h1 style="font-size: 35px;font-weight: bold">nodeJS操作</h1>
+        <p>NodeJs：是JavaScript在服务器端的实现<br/>js是运行在客户端的动态脚本</p>
+        <p>缺点：不安全（可靠性低）;单进程，只支持单线程CPU;</p>
+        <p>历史：Ryan Dahl 2009年4月宣布要开发，2011微软支持使其起来了</p>
+        <a>NodeJs使用：</a>
+        <p>1）声明一个http的实例：var 变量名 = require（"模块"） <br/>
+            2）创建一个http实例的服务：<br/>
+            var server = http.createServer(serverHandler);<br/>
+            function serverHandler(req,res){  }<br/>
+            3）启动服务：server.listen(27010);//端口号不要使用默认的</p>
+        <p>4) 处理客户机请求：</p>
+        <pre>
+            //一般客户机默认请求为GET方式
+            function serverHandler(req,res){
+                console.log（req.url/req.method）;
+
+                //处理请求头
+                res.writeHead(200,{
+                    "Content=Type":"text/plain";//这是默认的
+                })
+                res.end("server is starting");//尽量不要中文
+            }</pre>
+        <pre>
+            //POST
+            function serverHandler(req,res){
+                console.log（req.url/req.method）;
+
+                var postData = "";
+                req.addListener("data",function(postChunk){
+                    postData +=  postChunk;
+                });
+
+                req.addListener("end",function(){
+                    //此时已经接受完数据，处理客户机数据
+                    console.log(postData);
+                    //处理请求头
+                    res.writeHead(200,{
+                        "Content=Type":"text/plain";//这是默认的
+                    })
+                    res.end("server is starting");//尽量不要中文
+                })
+            }
+        </pre>
+        <span>服务器读取服务器端文件</span>
+        <pre>
+            //大概步骤
+            var qs = require('querystring');
+            var Data = [];
+            ....
+            ....
+            var postData = "";
+            req.addListener("data", function (postDataChunk) {
+                postData += postDataChunk;
+            });
+            req.addListener("end", function () {
+                console.log('数据接收完毕');
+            }
+        </pre>
+        <span>post 请求数据的处理</span>
+        <pre>
+            var qs = require("querystring");
+            ....
+            ....
+            req.addListener("end", function () {
+                console.log('数据接收完毕');
+            var json = qs.parse(postData);
+                console.log(json.firstname);
+                ....
+                Data.push(json);
+            }
+        </pre>
+
+    </div>
+
+
+</div>
+</body>
+</html>
