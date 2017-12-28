@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gift</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        #box{
+            width: 800px;
+            height: 300px;
+            position: relative;
+            background-color: cornsilk;
+            border: 2px solid black;
+        }
+        #box > img {position: absolute;}
+        .a {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 100px;
+            left: 160px;
+            z-index: 0;
+        }
+        .b {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            top:90px;
+            left: 200px;
+            z-index: 20;
+        }
+        .c {
+            width: 140px;
+            height: 140px;
+            position: absolute;
+            top: 80px;
+            left: 240px;
+            z-index: 40;
+
+        }
+        .d {
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            top: 70px;
+            left: 320px;
+            z-index: 60;
+        }
+        .e {
+            width: 140px;
+            height: 140px;
+            position: absolute;
+            top: 80px;
+            right: 240px;
+            z-index: 40;
+        }
+        .f {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            top:90px;
+            right: 200px;
+            z-index: 20;
+        }
+        .g {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 100px;
+            right: 160px;
+            z-index: 0;
+        }
+        #left {
+            border: 1px solid #000;
+            width:50px;
+            height: 50px;
+            position: absolute;
+            left: 50px;
+            top: 125px;
+            background: url("img/pin.png");
+            background-position: 0 5px;
+        }
+        #right {
+            border: 1px solid #000;
+            width:50px;
+            height: 50px;
+            position: absolute;
+            right: 50px;
+            top: 125px;
+            background: url("img/pin.png");
+            background-position: -50px 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="left"></div>
+    <img src="imgs/a.jpg" class="a">
+    <img src="imgs/b.jpg" class="b">
+    <img src="imgs/c.jpg" class="c">
+    <img src="imgs/d.jpg" class="d">
+    <img src="imgs/e.jpg" class="e">
+    <img src="imgs/f.jpg" class="f">
+    <img src="imgs/g.jpg" class="g">
+    <div id="right"></div>
+</div>
+<script>
+    $(function(){
+        let box = $("#box");
+        let imgs = $("#box>img");
+
+        let num = 0;
+        let cook = 0;
+        let hei = 100,wid = 100, lef = 120,Top = 0,inx = 0;
+
+        let flag = true;
+
+        $("#right").click(function() {
+            console.log(flag)
+            if (flag) {
+                flag = false;
+                console.log(flag);
+                num += 1;
+                if (num > 7) num -= 7;
+                if (num <=0 ) num += 7;
+                speed('right');
+            }
+            console.log(flag);
+        });
+
+        $("#left").click(function() {
+            if (flag) {
+                flag = false;
+                num -= 1;
+                if (num > 0) num -= 7;
+                if (num < -7) num += 7;
+                speed('left');
+            }
+        });
+
+
+        function speed(direction) {
+            imgs.each(function(index,ele) {
+                cook = index - num;
+                $(ele).numb = index;
+                if (cook < 0 && direction == 'right') cook += 7;
+                if (cook > 6 && direction == 'left') cook -= 7;
+                if (cook < 3) {
+                    Top = 100 - cook * 10 + 'px';
+                    hei = 100 + cook * 20 + 'px';
+                    lef = cook * 40 + 160 + 'px';
+                    inx = cook * 20;
+                    $(ele).css({"z-index": inx});
+                } else if (cook == 3) {
+                    Top = '70px';
+                    hei = '160px';
+                    lef = '320px';
+                    $(ele).css({"z-index": 60});
+                } else {
+                    Top = 70 + (cook - 3) * 10 + 'px';
+                    hei = 160 - (cook - 3) * 20 + 'px';
+                    inx = (6 - cook) * 20;
+                    lef = cook * 60 + 180 + 'px';
+                    $(ele).css({"z-index": inx});
+                }
+                wid = hei;
+                if ( direction == 'left' ? cook == 0 : cook == 6) {
+                    $(ele).css({width:wid, height:hei, left:lef, top:Top});
+                } else {
+                    $(ele).animate({width:wid, height:hei, left:lef, top:Top}, 1800);
+                }
+            })
+        }
+
+
+    })
+
+</script>
+
+</body>
+</html>
